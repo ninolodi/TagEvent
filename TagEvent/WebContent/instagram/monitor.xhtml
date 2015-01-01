@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"  
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+<ui:composition template="/template/template.xhtml">
+	<ui:define name="definicoesPre">
+		<link rel="stylesheet" type="text/css" href="/TagEvent/template/css/components/galeria/demo.css" />
+		<link rel="stylesheet" type="text/css" href="/TagEvent/template/css/components/galeria/component.css" />
+		<script src="/TagEvent/template/js/components/galeria/modernizr.custom.js"></script>
+	</ui:define>
+	
+	
+    <ui:define name="content">
+
+		<!-- RIBBON -->
+		<div id="ribbon">
+
+			<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+				<h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-instagram"></i> Instagram <span>> Monitor</span></h1>
+			</div>
+			
+
+			<!-- You can also add more buttons to the ribbon for further usability
+				Example below:
+ 			-->
+			<div class="ribbon-button-alignment pull-right">
+				<a class="btn btn-labeled btn-default" href="/TagEvent/instagram/principal.xhtml">
+					<span class="btn-label"> <i class="fa fa-bar-chart-o"></i></span>Principal
+				</a>
+				<a class="btn btn-labeled btn-default" href="/TagEvent/instagram/galeria.xhtml">
+					<span class="btn-label"> <i class="fa fa-camera"></i></span>Galeria
+				</a>
+				<a class="btn btn-labeled btn-info" href="/TagEvent/instagram/monitor.xhtml">
+					<span class="btn-label"> <i class="fa fa-shield"></i></span>Monitor
+				</a>
+				<a class="btn btn-labeled btn-default" href="/TagEvent/instagram/slideshow/slideshow.xhtml" target="_blank">
+					<span class="btn-label"> <i class="fa fa-desktop"></i></span>Slideshow
+				</a>
+				<a class="btn btn-labeled btn-default" href="/TagEvent/instagram/configurar.xhtml">
+					<span class="btn-label"> <i class="fa fa-cogs"></i></span>Configurar
+				</a>
+			</div>
+
+		</div>
+		<!-- END RIBBON -->
+
+		<!-- MAIN CONTENT -->
+		<div id="content">
+			<br/>
+
+			<h:form>			
+			<div class="well well-sm">
+				<div class="btn-group btn-group-justified">
+					<h:commandLink action="#{MonitorInstagramBean.bloquearTodos()}" class="btn btn-danger">
+					    <i class="glyphicon glyphicon-trash"></i> Bloquear Selecionadas
+					    <f:ajax event="action" render="@form" onevent="onCompleteDoLayout"/>
+					</h:commandLink>
+					
+					<h:commandLink action="#{MonitorInstagramBean.liberarTodos()}" class="btn btn-success">
+					    <i class="glyphicon glyphicon-ok"></i> Liberar Selecionadas
+					    <f:ajax event="action" render="@form" onevent="onCompleteDoLayout"/>
+					</h:commandLink>
+				</div>
+			</div>
+
+			<div id="grid-gallery" class="grid-gallery">
+				<section class="grid-wrap">
+					<ul class="grid">
+						<li class="grid-sizer"></li>
+						<!-- for Masonry column width -->
+						<ui:repeat value="#{MonitorInstagramBean.fotosInstagramHIM}" var="him" varStatus="status">
+							<li>
+								<figure class="#{him.instagramFoto.userInstagram.username}"> 
+									<img src="#{him.instagramFoto.urlImagemGrande}" alt="FOTO EXCLUÍDA PELO USUÁRIO" />
+									<figcaption>
+										<h:commandLink action="#{MonitorInstagramBean.bloquear(him.instagramFoto.pkInstagramFoto)}" class="btn btn-danger btn-circle">
+										    <i class="glyphicon glyphicon-trash"></i>
+										    <f:ajax event="action" render="@form" onevent="onCompleteDoLayout"/>
+										</h:commandLink>
+										<h:commandLink action="#{MonitorInstagramBean.liberar(him.instagramFoto.pkInstagramFoto)}" class="btn btn-success btn-circle">
+										    <i class="glyphicon glyphicon-ok"></i>
+										    <f:ajax event="action" render="@form" onevent="onCompleteDoLayout"/>
+										</h:commandLink>
+										<!--<h:selectBooleanCheckbox id="myonoffswitch#{status}" value="#{him.pk}">
+											<f:ajax event="valueChange" render="@form" onevent="onCompleteDoLayout"/>
+										</h:selectBooleanCheckbox>
+										<label for="myonoffswitch#{status}"> Liberar</label>-->	
+										<br/>
+										<br/>
+										<h3>#{him.instagramFoto.userInstagram.username}</h3>
+										<p>#{him.instagramFoto.texto}</p>
+									</figcaption>
+								</figure>
+							</li>
+						</ui:repeat>
+					</ul>
+				</section><!-- // grid-wrap -->
+				
+			</div>	<!-- // grid-gallery -->
+							
+			</h:form>
+			
+		</div>
+
+	</ui:define>
+	
+	<ui:define name="definicoesPos">
+		<script src="/TagEvent/template/js/components/galeria/imagesloaded.pkgd.min.js"></script>
+		<script src="/TagEvent/template/js/components/galeria/masonry.pkgd.min.js"></script>
+		<script src="/TagEvent/template/js/components/galeria/classie.js"></script>
+		<script src="/TagEvent/template/js/components/galeria/cbpGridGallery.js"></script>
+		<script>
+			new CBPGridGallery( document.getElementById( 'grid-gallery' ) );
+		</script>
+		<script type="text/javascript">
+		
+	    function onCompleteDoLayout(data)
+	    {
+	    	if (data.status == "complete")
+	    		sleep(10, doLayoutMansory);
+	    }
+		
+		function doLayoutMansory()
+		{
+			new CBPGridGallery( document.getElementById( 'grid-gallery' ) );
+		}
+
+		function sleep(millis, callback) 
+		{ setTimeout(doLayoutMansory, millis); }
+		</script>
+	</ui:define>
+	
+</ui:composition>
+
+</h:html>

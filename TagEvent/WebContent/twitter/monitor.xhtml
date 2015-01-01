@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"  
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+<ui:composition template="/template/template.xhtml">
+	<ui:define name="definicoesPre">
+
+	</ui:define>
+	
+    <ui:define name="content">
+
+		<!-- RIBBON -->
+		<div id="ribbon">
+
+			<span class="ribbon-button-alignment"> <span id="refresh"
+				class="btn btn-ribbon" data-title="refresh" rel="tooltip"
+				data-placement="bottom" data-html="true"><i
+					class="fa fa-refresh"></i></span>
+			</span>
+
+			<!-- breadcrumb -->
+			<ol class="breadcrumb">
+				<li>Twitter</li>
+				<li>Principal</li>
+			</ol>
+			<!-- end breadcrumb -->
+
+			<!-- You can also add more buttons to the
+				ribbon for further usability
+
+				Example below:
+ -->
+			<div class="ribbon-button-alignment pull-right">
+				<button type="button" class="btn btn-labeled btn-info">
+					<span class="btn-label"> <i class="glyphicon glyphicon-ok"></i></span>Principal
+				</button>
+				<button type="button" class="btn btn-labeled btn-success">
+					<span class="btn-label"> <i class="glyphicon glyphicon-ok"></i></span>Monitor
+				</button>
+				<button type="button" class="btn btn-labeled btn-deafult">
+					<span class="btn-label"> <i class="glyphicon glyphicon-ok"></i></span>Configurar
+				</button>
+				<button type="button" class="btn btn-labeled btn-warnning">
+					<span class="btn-label"> <i class="glyphicon glyphicon-ok"></i></span>Slideshow
+				</button>
+			</div>
+
+		</div>
+		<!-- END RIBBON -->
+
+		<!-- MAIN CONTENT -->
+		<div id="content">
+
+			<div class="jarviswidget" id="wid-id-7"
+				data-widget-editbutton="false" data-widget-fullscreenbutton="false"
+				data-widget-custombutton="false" data-widget-sortable="false">
+
+				<header>
+				<ul class="nav nav-tabs pull-left in">
+
+					<li class="active"><a data-toggle="tab" href="#hr1"> <i
+							class="fa fa-lg fa-arrow-circle-o-down"></i> <span
+							class="hidden-mobile hidden-tablet"> Tweets Negativos <span
+								class="label bg-color-red txt-color-white"> 2 <i
+									class="fa fa-exclamation"></i>
+							</span>
+						</span>
+					</a></li>
+
+					<li><a data-toggle="tab" href="#hr2"> <i
+							class="fa fa-lg fa-arrow-circle-o-up"></i> <span
+							class="hidden-mobile hidden-tablet"> Tweets Neutros <span
+								class="label bg-color-blue txt-color-white"> 2 <i
+									class="fa fa-exclamation"></i>
+							</span>
+						</span>
+					</a></li>
+
+					<li><a data-toggle="tab" href="#hr3"> <i
+							class="fa fa-lg fa-arrow-circle-o-up"></i> <span
+							class="hidden-mobile hidden-tablet"> Tweets Positivos <span
+								class="label bg-color-green txt-color-white"> 2 <i
+									class="fa fa-exclamation"></i>
+							</span>
+						</span>
+					</a></li>
+
+				</ul>
+				</header>
+
+				<!-- widget div-->
+				<div>
+					<!-- widget content -->
+					<div class="widget-body">
+
+						<div class="tab-content">
+							<div class="tab-pane active" id="hr1">
+
+
+
+								<div class="row">
+									<article class="col-sm-8 col-md-8 col-lg-8">
+									<div class="jarviswidget jarviswidget-color-red col-sm-12"
+										id="wid-id-1" data-widget-editbutton="false"
+										data-widget-fullscreenbutton="true">
+
+										<header> <span class="widget-icon"> <i
+											class="fa fa-comments txt-color-white"></i>
+										</span>
+										<h2>Tweets Críticos</h2>
+										</header>
+
+										<!-- widget div-->
+										<div>
+											<div class="widget-body widget-hide-overflow no-padding">
+												<!-- content goes here -->
+
+												<!-- CHAT BODY -->
+												<div id="chat-body" class="chat-body custom-scroll">
+													<ul>
+														<li class="message"><img src="/template/img/avatars/5.png"
+															class="online" alt="" />
+															<div class="message-text">
+																<time> 08/04/2014 14:26 </time>
+																<a href="javascript:void(0);" class="username">Sadi
+																	Orlaf</a> - <strong>Falta</strong> uma hora para a primeira
+																partida das semifinais da <i>#SuperligaFeminina</i> e
+																logo mais nossas meninas entrarão em quadra!!!…
+																http://t.co/Ou81bEToTr [<a href="javascript:void(0);"
+																	class="font-xs">Mais Detalhes</a>] <br /> <span
+																	class="text-muted"> Palavra-chave:
+																	#SuperligaFeminina - Negativo: "Falta". </span>
+																<p class="chat-file row">
+																	<span class="col-sm-6 pull-right"> <a
+																		href="javascript:void(0);"
+																		class="btn btn-xs btn-success">Liberar</a> <a
+																		href="javascript:void(0);"
+																		class="btn btn-xs btn-default">Bloquear</a>
+																	</span>
+																</p>
+															</div></li>
+														<li class="message"><img src="img/avatars/sunny.png"
+															class="online" alt="" />
+															<div class="message-text">
+																<time> 08/04/2014 14:26 </time>
+																<a href="javascript:void(0);" class="username">Sadi
+																	Orlaf</a> - O estacionamento da <i>#ArenaAmil</i> está <strong>horrível</strong>
+																para estacionar!!! [<a href="javascript:void(0);"
+																	class="font-xs">Mais Detalhes</a>] <br /> <span
+																	class="text-muted"> Palavra-chave: #ArenaAmil -
+																	Negativo: "horrível". </span>
+																<p class="chat-file row">
+																	<span class="col-sm-6 pull-right"> <a
+																		href="javascript:void(0);"
+																		class="btn btn-xs btn-success">Liberar</a> <a
+																		href="javascript:void(0);"
+																		class="btn btn-xs btn-default">Bloquear</a>
+																	</span>
+																</p>
+															</div></li>
+													</ul>
+
+												</div>
+												<!-- end content -->
+											</div>
+
+										</div>
+										<!-- end widget div -->
+									</div>
+									<!-- end widget --> </article>
+									<article class="col-sm-4 col-md-4 col-lg-4">
+
+									<div
+										class="jarviswidget jarviswidget-color-greenLight col-sm-12"
+										id="wid-id-3" data-widget-editbutton="false">
+										<!-- widget options:
+						usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+	
+						data-widget-colorbutton="false"
+						data-widget-editbutton="false"
+						data-widget-togglebutton="false"
+						data-widget-deletebutton="false"
+						data-widget-fullscreenbutton="false"
+						data-widget-custombutton="false"
+						data-widget-collapsed="true"
+						data-widget-sortable="false"
+	
+						-->
+										<header> <span class="widget-icon"> <i
+											class="fa fa-table"></i>
+										</span>
+										<h2>Top 5 Usuários - Tweets</h2>
+
+										</header>
+
+										<!-- widget div-->
+										<div>
+
+											<!-- widget edit box -->
+											<div class="jarviswidget-editbox">
+												<!-- This area used as dropdown edit box -->
+
+											</div>
+											<!-- end widget edit box -->
+
+											<!-- widget content -->
+											<div class="widget-body no-padding">
+
+												<div class="alert alert-success no-margin fade in">
+													Ranking dos usuários com mais tweets durante o evento</div>
+
+												<table class="table">
+													<thead>
+														<tr>
+															<th>#</th>
+															<th><i class="fa fa-building"></i> Usuários</th>
+															<th><i class="glyphicon glyphicon-send"></i> Tweets</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr class="success">
+															<td>1</td>
+															<td>dm_macedo</td>
+															<td>8</td>
+														</tr>
+														<tr class="danger">
+															<td>2</td>
+															<td>joao.silva</td>
+															<td>6</td>
+														</tr>
+														<tr class="warning">
+															<td>3</td>
+															<td>lucas_db</td>
+															<td>5</td>
+														</tr>
+														<tr class="info">
+															<td>4</td>
+															<td>jess_barros</td>
+															<td>3</td>
+														</tr>
+													</tbody>
+												</table>
+
+											</div>
+											<!-- end widget content -->
+
+										</div>
+										<!-- end widget div -->
+
+									</div>
+									<!-- end widget --> </article>
+								</div>
+
+							</div>
+							<div class="tab-pane" id="hr2">
+
+								<div class="row">
+									<div class="jarviswidget jarviswidget-color-blue col-sm-8"
+										id="wid-id-2" data-widget-editbutton="false"
+										data-widget-fullscreenbutton="true">
+
+										<header> <span class="widget-icon"> <i
+											class="fa fa-comments txt-color-white"></i>
+										</span>
+										<h2>Tweets Neutros</h2>
+										</header>
+
+										<!-- widget div-->
+										<div>
+											<div class="widget-body widget-hide-overflow no-padding">
+												<!-- content goes here -->
+
+												<!-- CHAT BODY -->
+												<div id="chat-body" class="chat-body custom-scroll">
+													<ul>
+														<li class="message"><img src="img/avatars/3.png"
+															class="online" alt="" />
+															<div class="message-text">
+																<time> 08/04/2014 14:26 </time>
+																<a href="javascript:void(0);" class="username">Sadi
+																	Orlaf</a> - Rumo a uma final diferente??? Vai, <i>@VoleiAmil</i>!
+																[<a href="javascript:void(0);" class="font-xs">Mais
+																	Detalhes</a>] <br /> <span class="text-muted">
+																	Palavra-chave: @VoleiAmil </span>
+																<p class="chat-file row">
+																	<span class="col-sm-6 pull-right"> <a
+																		href="javascript:void(0);"
+																		class="btn btn-xs btn-success">Liberar</a> <a
+																		href="javascript:void(0);"
+																		class="btn btn-xs btn-default">Bloquear</a>
+																	</span>
+																</p>
+															</div></li>
+														<li class="message"><img src="img/avatars/4.png"
+															class="online" alt="" />
+															<div class="message-text">
+																<time> 08/04/2014 14:26 </time>
+																<a href="javascript:void(0);" class="username">Sadi
+																	Orlaf</a> - <i>#SuperligaFeminina</i> #Playoffs Já vai
+																começar a semifinal entre <i>@VoleiAmil</i> e
+																@unilevervolei, e você vai acompanhar tudo aqui, em
+																tempo real! [<a href="javascript:void(0);"
+																	class="font-xs">Mais Detalhes</a>] <br /> <span
+																	class="text-muted"> Palavra-chave:
+																	#SuperligaFeminina @VoleiAmil </span>
+																<p class="chat-file row">
+																	<span class="col-sm-6 pull-right"> <a
+																		href="javascript:void(0);"
+																		class="btn btn-xs btn-success">Liberar</a> <a
+																		href="javascript:void(0);"
+																		class="btn btn-xs btn-default">Bloquear</a>
+																	</span>
+																</p>
+															</div></li>
+													</ul>
+
+												</div>
+												<!-- end content -->
+											</div>
+
+										</div>
+										<!-- end widget div -->
+									</div>
+									<!-- end widget -->
+								</div>
+
+							</div>
+							<div class="tab-pane" id="hr3">
+
+								<div class="row">
+									<div class="jarviswidget jarviswidget-color-green col-sm-8"
+										id="wid-id-3" data-widget-editbutton="false"
+										data-widget-fullscreenbutton="true">
+
+										<header> <span class="widget-icon"> <i
+											class="fa fa-comments txt-color-white"></i>
+										</span>
+										<h2>Tweets Positivos</h2>
+										</header>
+
+										<!-- widget div-->
+										<div>
+											<div class="widget-body widget-hide-overflow no-padding">
+												<!-- content goes here -->
+
+												<!-- CHAT BODY -->
+												<div id="chat-body" class="chat-body custom-scroll">
+													<ul>
+														<li class="message"><img src="img/avatars/2.png"
+															class="online" alt="" />
+															<div class="message-text">
+																<time> 08/04/2014 14:26 </time>
+																<a href="javascript:void(0);" class="username">Sadi
+																	Orlaf</a> - Mais um <strong>lindo</strong> jogo com o <i>#VoleiAmil</i>
+																[<a href="javascript:void(0);" class="font-xs">Mais
+																	Detalhes</a>] <br /> <span class="text-muted">
+																	Palavra-chave: #VoleiAmil - Positivo: "lindo". </span>
+																<p class="chat-file row">
+																	<span class="col-sm-6 pull-right"> <a
+																		href="javascript:void(0);"
+																		class="btn btn-xs btn-success">Liberar</a> <a
+																		href="javascript:void(0);"
+																		class="btn btn-xs btn-default">Bloquear</a>
+																	</span>
+																</p>
+															</div></li>
+														<li class="message"><img src="img/avatars/1.png"
+															class="online" alt="" />
+															<div class="message-text">
+																<time> 08/04/2014 14:26 </time>
+																<a href="javascript:void(0);" class="username">Sadi
+																	Orlaf</a> - <i>@VoleiAmil</i> na expectativa desse <strong>grande</strong>
+																confronto... [<a href="javascript:void(0);"
+																	class="font-xs">Mais Detalhes</a>] <br />
+
+																<p class="chat-file row">
+																	<span class="text-muted pull-left">
+																		Palavra-chave: @VoleiAmil - Positivo: "grande". </span> <span
+																		class="col-sm-6 pull-right"> <a
+																		href="javascript:void(0);"
+																		class="btn btn-xs btn-success">Liberar</a> <a
+																		href="javascript:void(0);"
+																		class="btn btn-xs btn-default">Bloquear</a>
+																	</span>
+																</p>
+															</div></li>
+													</ul>
+
+												</div>
+												<!-- end content -->
+											</div>
+
+										</div>
+										<!-- end widget div -->
+									</div>
+									<!-- end widget -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</ui:define>
+	
+	<ui:define name="definicoesPos">
+			
+	</ui:define>
+	
+</ui:composition>
+
+</h:html>

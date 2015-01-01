@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>#TagEvent - Slideshow</title>
+	
+	<link href="/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+	<link href="/css/thermometer.css" rel="stylesheet" type="text/css"/>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.cycle.all.latest.js"></script>
+	<script type="text/javascript" src="/js/thermometer.js"></script>
+	
+	<style type="text/css">
+
+	@font-face {
+	  font-family: FonteLogo;
+	  src: url(/fonts/FromWhereYouAre.ttf);
+	}
+	
+	#tituloSlideShow p {
+		font-family: FonteLogo;
+		text-align: center;
+		font-size: 22px;
+		line-height: 18px;
+	  	color: #cfcfcf;
+	}
+	
+	#rodapeSlideShow p {
+		font-family: FonteLogo;
+		text-align: center;
+		font-size: 14px;
+		line-height: 14px;
+	  	color: #cfcfcf;
+	  	margin-top: 5px;
+	}
+	
+	.tela {
+	  background-image: url(/img/eventos/amil/fundoSlideShowAmilInstagram.jpg);
+	  width:720px;
+	  height:432px;
+	}
+	
+	#galeria {
+	  width: 432px;
+	  height: 432px;
+	  background-color:#000;
+	}
+	
+	#mask {
+	  position:absolute;
+	  left:0;
+	  top:0;
+	  width: 100%;
+	  height: 100%;
+	  background-color:#000;
+	}
+	
+	.pics {
+	  width: 100%;
+	  height: 100%;
+	}
+	
+	.img-wrap{
+	height:432px;
+	width:432px;
+	overflow:hidden;
+	position:absolute;
+	}
+	.img-wrap img{
+	height:432px;
+	width:432px;
+	vertical-align:middle;
+	}
+	.img-overlay{
+	background-color:#000;
+	bottom:0;
+	color:#fff;
+	opacity:0;
+	filter: alpha(opacity = 0);
+	position:absolute;
+	width:100%;
+	z-index:1;
+	}
+	.img-overlay h4, .img-overlay p{
+	/* padding:0 5px; */
+	text-align: left;
+	line-height: 12px;
+	/* padding-left: 5px; */
+	}
+	.img-wrap .img-overlay{
+	opacity:0.75;
+	filter: alpha(opacity = 65);
+	transition:opacity 0.25s;
+	-moz-transition:opacity 0.25s;
+	-webkit-transition:opacity 0.25s;
+	}
+	
+	
+	</style>
+
+</head>
+<body>
+	<div id="mask" align="center">
+	<div id="conteudo" class="row-fluid">
+		<!-- <br> -->
+		<div class="tela">
+			<div align="right" class="span2"> 
+			
+ 			</div>
+						
+			<div align="right" class="span10">
+				<div class="row-fluid">
+
+				</div>
+				
+				<div class="row-fluid quadro">
+					<div id="galeria" class="slideshow">
+
+					</div>
+				</div>
+	
+			</div>
+
+		</div>
+	</div>
+</div>
+</body>
+</html>

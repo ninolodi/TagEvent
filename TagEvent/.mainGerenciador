@@ -1,0 +1,28 @@
+#Arquivo Properties [D:/Programacao/Flex/Atta/TagEvent/.mainGerenciador]
+#Tue Dec 23 12:06:21 BRST 2014
+config_flyspray_semborda=false
+config_flyspray_url=
+config_comparaBaseNova=novaBD
+config_flyspray_datalimite=
+config_compararBasesCTRLV=true
+config_flyspray_tipograficohoras=
+config_flyspray_porta=
+config_flyspray_duplicartarefanovosprint=
+config_gerarTabelasBase=novaBD
+config_flyspray_senha=
+config_flyspray_opcao_relatorio=Todas
+config_flyspray_tipotarefas=
+config_flyspray_modograficohoras=
+config_flyspray_tarefasSprint=
+config_gerarTabelasDrop=true
+config_flyspray_base=
+config_flyspray_resumotarefassuportes=false
+config_comparaBaseAtual=tageventBD
+config_flyspray_2coluna=false
+config_flyspray_duplicartarefarelacionar=false
+config_populaBase=tageventBD
+config_compararBasesFKSEPARADA=false
+config_flyspray_resumotarefassprint=false
+config_flyspray_login=
+config_compararBasesSCRIPT=true
+config_flyspray_tarefasID=

@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"  
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+<h:head>
+	<title>#TagEvent - Slideshow</title>
+	
+	<link href="/TagEvent/template/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script type="text/javascript" src="/TagEvent/template/js/components/slideshow/jquery.cycle.all.latest.js"></script>
+	
+	<style type="text/css">
+		
+		@font-face {
+		  font-family: FonteLogo;
+		  src: url(/TagEvent/template/fonts/FromWhereYouAre.ttf);
+		}
+		
+		@font-face {
+		  font-family: ErasDemi;
+		  src: url(/TagEvent/template/fonts/ERASDEMI.TTF);
+		}
+				
+		#tituloSlideShow p {
+			font-family: FonteLogo;
+			text-align: right;
+			vertical-align: middle;
+			font-size: 14px;
+			line-height: 50px;
+		  	color: #cfcfcf;
+		}
+		
+		#rodapeSlideShow p {
+			font-family: FonteLogo;
+			text-align: center;
+			font-size: 14px;
+			line-height: 12px;
+		  	color: #cfcfcf;
+		  	margin-top: 5px;
+		  	height: 28px;
+		}
+		
+		#textoPerfilPublico p {
+			font-family: ErasDemi;
+			text-align: center;
+			font-size: 22px;
+			line-height: 25px;
+		  	color: #cfcfcf;
+		  	margin-top: 5px;
+		  	height: 28px;
+		}
+		
+		#comments {
+		 vertical-align: middle;
+		 display: table-cell;
+		 }
+				
+		#comments p {
+			font-family: ErasDemi;
+			text-align: center;
+			font-size: 25px;
+		  	color: #cfcfcf;
+		  	margin-top: 5px;
+		}
+				
+		#usuario {
+		 vertical-align: middle;
+		 display: table-cell;
+		 }
+		
+		.hashtag h1 {
+			font-family: ErasDemi;
+			text-align: center;
+			font-size: 45px;
+		  	color: #cfcfcf;
+		  	margin-top: 5px;
+		}
+		 	
+		.nome h3 {
+			font-family: ErasDemi;
+			text-align: center;
+			font-size: 30px;
+		  	color: #cfcfcf;
+		  	margin-top: 5px;
+		}
+		
+		.user h4 {
+			font-family: ErasDemi;
+			text-align: center;
+			font-size: 27px;
+		  	color: #cfcfcf;
+		  	margin-top: 5px;
+		}
+		
+		.borda {
+		 border: 1px  #cfcfcf;
+ 		background: #fff;
+		opacity:0.25;
+		filter: alpha(opacity = 15);
+		transition:opacity 0.25s;
+		-moz-transition:opacity 0.25s;
+		-webkit-transition:opacity 0.25s;
+		}
+		
+		.tela {
+		  width:1024px;
+		  height:768px;
+		}
+		
+		#galeria {
+		  width: 100%;
+		  height: 100%;
+		  background-color:#000;
+		}
+		
+		#mask {
+		  position:absolute;
+		  left:0;
+		  top:0;
+		  width: 100%;
+		  height: 100%;
+		  background-color:#000;
+		}
+		
+		.pics {
+		  width: 100%;
+		  height: 100%;
+		}
+		
+		.img-wrap{
+		height:100%;
+		width:100%;
+		overflow:hidden;
+		position:absolute;
+		}
+		.img-wrap img{
+		  height:100%;
+		  width:100%;
+		  vertical-align:middle;
+		  margin-bottom: 5px;
+		  margin-right: 5px;
+		}
+		.img-overlay{
+		background-color:#000;
+		bottom:0;
+		color:#fff;
+		opacity:0;
+		filter: alpha(opacity = 0);
+		position:absolute;
+		width:100%;
+		z-index:1;
+		}
+		.img-overlay h4, .img-overlay p{
+		/* padding:0 5px; */
+		text-align: left;
+		line-height: 12px;
+		padding-left: 5px;
+		}
+		.img-wrap .img-overlay{
+		opacity:0.75;
+		filter: alpha(opacity = 65);
+		transition:opacity 0.25s;
+		-moz-transition:opacity 0.25s;
+		-webkit-transition:opacity 0.25s;
+		}
+
+	</style>
+</h:head>
+<h:body style="margin: 0 0 0px">
+<div id="mask" align="center">
+	<div id="conteudo">
+		<div class="tela" style="width: 1024px; height: 768px;">
+			<div style="width: 1024px; height: 68px; position: relative;">
+				<div align="left" style="width: 155px; height: 68px; float: left;">
+					<img src="/TagEvent/template/img/logos/logoInstagram240.png" width="160" height="50" id="logo" class="topo"/>
+				</div>
+				<div align="right" style="width: 245px; height: 68px; float: left;">
+					<div id="textoPerfilPublico"><p style="margin: 0 0 0px">Publique fotos em seu perfil público com</p></div>
+				</div>
+				<div align="right" class="hashtag" style="width: 624px; height: 68px; float: right;">
+					<h1 style="margin: 0 0 0px"><font color="#7ac657">#Hashtag</font></h1>
+				</div>
+			</div>
+			<div style="width: 1024px; height: 624px; position: relative;">
+				<h:form  id="galeriaForm">
+					<div>
+						<div id="galeria" class="slideshow" style="position: relative; width: 1024px; height: 624px;">
+							<ui:repeat value="#{SlideshowInstagramBean.fotosInstagram}" var="InstagramFoto" varStatus="status">			
+								<div class="img-wrap">	
+									<div style="width: 400px; height: 624px; float: left;">
+										<div align="right" style="width: 155px; height: 150px; float: left;">
+											<img align="right" src="#{InstagramFoto.userInstagram.urlImagemMedia}" alt="FOTO REMOVIDA PELO USUÁRIO" style="position: relative; width: 150px; height: 150px;"/>
+										</div>
+										<div id="usuario" align="center" style="width: 245px; height: 150px; float: right;">
+											<div class="nome">
+												<h3>#{InstagramFoto.userInstagram.nome}</h3>
+											</div>
+											
+											<div class="user">
+												<h4>@#{InstagramFoto.userInstagram.username}</h4>
+											</div>
+										</div>
+										
+										<div id="comments" align="center" style="width: 400px; height: 474px;">
+											<p><i>"#{InstagramFoto.texto}"</i></p>
+										</div>
+									</div>				
+									
+									<div style="width: 624px; height: 624 px; float: right;">
+										<div align="center" style="width: 624px; height: 624px;">
+											<img src="#{InstagramFoto.urlImagemGrande}" alt="FOTO REMOVIDA PELO USUÁRIO"/>
+										</div>
+									</div>
+								</div>
+							</ui:repeat>
+						</div>
+					</div>	
+					
+					<h:commandButton id="resetForm" style="display: none;">
+						<f:ajax event="action" render="@form" onevent="onReset"/>
+					</h:commandButton> 
+				</h:form>	
+			</div>
+			<div style="width: 1024px; height: 76px; position: relative;">
+				<div align="right" style="width: 400px; height: 76px; float: left;">
+								
+				</div>
+				<div align="center" style="width: 624px; height: 76px; float: left;">
+					<br/>
+					<img src="/TagEvent/template/img/logos/logoWebsiteBranco200.png" width="200" height="20" id="logoWebsite"/>
+				</div>
+			</div>
+			
+			<h:form  id="hiddenForm" style="display: none;">
+				<h:commandButton id="btGetMorePhoto" actionListener="#{SlideshowInstagramBean.getAutoMorePhotos()}">
+					<f:ajax event="action" render="@this"/>
+				</h:commandButton> 
+			</h:form>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+		
+	$(document).ready(function() {
+		$('body').css('overflow','hidden');
+		startSlide();
+	});
+	
+	function onReset(data)
+    {
+    	if (data.status == "success")
+    	{ 
+    		startSlide();
+    	}
+    }
+	
+    function resetSlide() {
+    	document.getElementById("galeriaForm:resetForm").click();
+	}
+	
+	function startSlide() {
+		$('#galeria').cycle({
+			fx: 'fade',
+			timeout: 5000,
+	        speed: 2000,
+			backwards: false,
+	        autostop: 1,
+	        end: resetSlide
+		});   
+	}
+
+	var timer = setInterval(autoGetPhoto, 15000);
+	function autoGetPhoto()
+	{
+		document.getElementById("hiddenForm:btGetMorePhoto").click();
+	}
+	
+	function sleep(millis, callback) 
+	{ setTimeout(callback, millis); }
+</script>
+
+</h:body>
+</h:html>

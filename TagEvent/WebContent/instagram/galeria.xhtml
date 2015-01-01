@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"  
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+<f:metadata>
+    <f:viewParam id="pHashtag" name="h" value="#{GaleriaInstagramBean.hashtag}" required="false"/>
+    <f:viewParam id="pPkEvento" name="e" value="#{GaleriaInstagramBean.pkEvento}" required="false"/>
+    <f:event type="preRenderView" listener="#{GaleriaInstagramBean.atualizar()}" />
+</f:metadata>
+
+<ui:composition template="/template/template.xhtml">
+	<ui:define name="definicoesPre">
+		<link rel="stylesheet" type="text/css" href="/TagEvent/template/css/components/galeria/demo.css" />
+		<link rel="stylesheet" type="text/css" href="/TagEvent/template/css/components/galeria/component.css" />
+		<script src="/TagEvent/template/js/components/galeria/modernizr.custom.js"></script>
+	</ui:define>
+	
+    <ui:define name="content">
+
+		<!-- RIBBON -->
+		<div id="ribbon">
+
+			<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+				<h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-instagram"></i> Instagram <span>> Galeria</span></h1>
+			</div>
+			
+
+			<!-- You can also add more buttons to the ribbon for further usability
+				Example below:
+ 			-->
+			<div class="ribbon-button-alignment pull-right">
+				<a class="btn btn-labeled btn-default" href="/TagEvent/instagram/principal.xhtml">
+					<span class="btn-label"> <i class="fa fa-bar-chart-o"></i></span>Principal
+				</a>
+				<a class="btn btn-labeled btn-info" href="/TagEvent/instagram/galeria.xhtml">
+					<span class="btn-label"> <i class="fa fa-camera"></i></span>Galeria
+				</a>
+				<a class="btn btn-labeled btn-default" href="/TagEvent/instagram/monitor.xhtml">
+					<span class="btn-label"> <i class="fa fa-shield"></i></span>Monitor
+				</a>
+				<a class="btn btn-labeled btn-default" href="/TagEvent/instagram/slideshow/slideshow.xhtml" target="_blank">
+					<span class="btn-label"> <i class="fa fa-desktop"></i></span>Slideshow
+				</a>
+				<a class="btn btn-labeled btn-default" href="/TagEvent/instagram/configurar.xhtml">
+					<span class="btn-label"> <i class="fa fa-cogs"></i></span>Configurar
+				</a>
+			</div>
+
+		</div>
+		<!-- END RIBBON -->
+
+		<!-- MAIN CONTENT -->
+		<div id="content">
+
+			<br/>
+			<div class="well well-sm">
+				<div class="input-group">
+					<input id="glyph-search" class="form-control input-lg" type="text" placeholder="Procure por uma foto..."/>
+					<span class="input-group-addon"><i class="fa fa-fw fa-lg fa-search"></i></span>
+				</div>
+			</div>
+			<h:form>
+			<div id="grid-gallery" class="grid-gallery">
+				<section class="grid-wrap">
+					<ul class="grid">
+						<li class="grid-sizer"></li>
+						<!-- for Masonry column width -->
+						<ui:repeat value="#{GaleriaInstagramBean.fotosInstagram}" var="InstagramFoto" varStatus="status">
+							<li>
+								<figure class="#{InstagramFoto.userInstagram.username}"> 
+									<img src="#{InstagramFoto.urlImagemGrande}" alt="FOTO EXCLUÍDA PELO USUÁRIO" />
+									<figcaption>
+										<h3>#{InstagramFoto.userInstagram.username}</h3>
+										<p>#{InstagramFoto.texto}</p>
+									</figcaption>
+								</figure>
+							</li>
+						</ui:repeat>
+					</ul>
+				</section><!-- // grid-wrap -->
+				<section class="slideshow">
+					<ul>
+						<ui:repeat value="#{GaleriaInstagramBean.fotosInstagram}" var="InstagramFoto" varStatus="status">
+							<li>
+								<figure>
+									<figcaption>
+										<h3>#{InstagramFoto.userInstagram.username}</h3>
+										<p>#{InstagramFoto.texto}</p>
+									</figcaption>
+									<img src="#{InstagramFoto.urlImagemGrande}" alt="FOTO EXCLUÍDA PELO USUÁRIO"/>
+								</figure>
+							</li>
+						</ui:repeat>
+					</ul>
+					<nav> 
+						<span class="icon nav-prev"></span>
+						<span class="icon nav-next"></span> 
+						<span class="icon nav-close"></span>
+					</nav>
+					<div class="info-keys icon">Navegue com as setas do teclado</div>
+				</section> <!-- // slideshow -->
+			</div>	<!-- // grid-gallery -->
+
+			<div class="btn-group btn-group-justified">
+				<h:commandLink class="btn btn-default">
+				    <span class="btn-label"> <i class="fa fa-plus"></i> fotos</span>
+				    <f:ajax event="click" render="@form" listener="#{GaleriaInstagramBean.getMorePhotos()}" onevent="onCompleteGetMorePhotos"/>
+				</h:commandLink>
+			</div>
+			</h:form>
+		</div>
+
+	</ui:define>
+	
+	<ui:define name="definicoesPos">
+		<script src="/TagEvent/template/js/components/galeria/imagesloaded.pkgd.min.js"></script>
+		<script src="/TagEvent/template/js/components/galeria/masonry.pkgd.min.js"></script>
+		<script src="/TagEvent/template/js/components/galeria/classie.js"></script>
+		<script src="/TagEvent/template/js/components/galeria/cbpGridGallery.js"></script>
+		<script>
+			new CBPGridGallery( document.getElementById( 'grid-gallery' ) );
+		</script>
+		<script type="text/javascript">
+		
+	    function onCompleteGetMorePhotos(data)
+	    {
+	    	if (data.status == "success")
+	    	{ doLayoutMansory(); }
+	    }
+		
+		function doLayoutMansory()
+		{
+			new CBPGridGallery( document.getElementById( 'grid-gallery' ) );
+		}
+
+		function sleep(millis, callback) 
+		{ setTimeout(callback, millis); }
+		</script>
+		
+	</ui:define>
+	
+</ui:composition>
+
+</h:html>

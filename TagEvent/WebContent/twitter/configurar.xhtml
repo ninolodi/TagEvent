@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"  
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+<ui:composition template="/template/template.xhtml">
+	<ui:define name="definicoesPre">
+
+	</ui:define>
+	
+    <ui:define name="content">
+
+		<!-- RIBBON -->
+		<div id="ribbon">
+
+			<span class="ribbon-button-alignment">
+				<span id="refresh" class="btn btn-ribbon" data-title="refresh" rel="tooltip" data-placement="bottom" data-html="true">
+					<i class="fa fa-refresh"></i>
+				</span>
+			</span>
+
+			<!-- breadcrumb -->
+			<ol class="breadcrumb">
+				<li>Breadcrumb 1</li>
+				<li>Breadcrumb 2</li>
+			</ol>
+			<!-- end breadcrumb -->
+
+			<!-- You can also add more buttons to the ribbon for further usability
+				Example below:
+ 			-->
+			<div class="ribbon-button-alignment pull-right">
+				<button type="button" class="btn btn-labeled btn-info">
+					<span class="btn-label"> <i class="glyphicon glyphicon-ok"></i></span>Principal
+				</button>
+				<button type="button" class="btn btn-labeled btn-success">
+					<span class="btn-label"> <i class="glyphicon glyphicon-ok"></i></span>Monitor
+				</button>
+				<button type="button" class="btn btn-labeled btn-deafult">
+					<span class="btn-label"> <i class="glyphicon glyphicon-ok"></i></span>Configurar
+				</button>
+				<button type="button" class="btn btn-labeled btn-warnning">
+					<span class="btn-label"> <i class="glyphicon glyphicon-ok"></i></span>Slideshow
+				</button>
+			</div>
+
+		</div>
+		<!-- END RIBBON -->
+
+		<!-- MAIN CONTENT -->
+		<div id="content">
+
+			
+		</div>
+
+	</ui:define>
+	
+	<ui:define name="definicoesPos">
+			
+	</ui:define>
+	
+</ui:composition>
+
+</h:html>

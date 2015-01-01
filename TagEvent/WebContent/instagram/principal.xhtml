@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"  
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+<f:metadata>
+    <f:event type="preRenderView" listener="#{PrincipalInstagramBean.atualizar()}"/>
+</f:metadata>
+<ui:composition template="/template/template.xhtml">
+	<ui:define name="definicoesPre">
+		<link href="/TagEvent/template/css/components/charts/morris.css" rel="stylesheet" type="text/css"/>
+	</ui:define>
+	
+    <ui:define name="content">
+
+		<!-- RIBBON -->
+		<div id="ribbon">
+
+			<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+				<h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-instagram"></i> Instagram <span>> Principal</span></h1>
+			</div>
+			
+			<div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+				<a class="btn btn-labeled btn-info" href="/TagEvent/instagram/principal.xhtml">
+					<span class="btn-label"> <i class="fa fa-bar-chart-o"></i></span>Principal
+				</a>
+				<a class="btn btn-labeled btn-default" href="/TagEvent/instagram/galeria.xhtml">
+					<span class="btn-label"> <i class="fa fa-camera"></i></span>Galeria
+				</a>
+				<a class="btn btn-labeled btn-default" href="/TagEvent/instagram/monitor.xhtml">
+					<span class="btn-label"> <i class="fa fa-shield"></i></span>Monitor
+				</a>
+				<a class="btn btn-labeled btn-default" href="/TagEvent/instagram/slideshow/slideshow.xhtml" target="_blank">
+					<span class="btn-label"> <i class="fa fa-desktop"></i></span>Slideshow
+				</a>
+				<a class="btn btn-labeled btn-default" href="/TagEvent/instagram/configurar.xhtml">
+					<span class="btn-label"> <i class="fa fa-cogs"></i></span>Configurar
+				</a>
+			</div>
+
+		</div>
+		<!-- END RIBBON -->
+
+		<!-- MAIN CONTENT -->
+		<div id="content">
+			
+			<hr class="line"/>
+
+			<div class="row placeholders">
+				<div class="col-xs-6 col-sm-3 placeholder center resume">
+					<i class="fa fa-lg fa-instagram fa-5x fa-fw colorBlue"></i>
+					<h4>#{PrincipalInstagramBean.getNrTotalMidias()}</h4>
+					<p class="text-muted">Total de Posts</p>
+				</div>
+				<div class="col-xs-6 col-sm-3 placeholder center resume">
+					<i class="fa fa-camera fa-5x fa-fw colorBlue"></i>
+					<h4>#{PrincipalInstagramBean.getNrTotalFotos()}</h4>
+					<p>Total de Fotos</p>
+				</div>
+				<div class="col-xs-6 col-sm-3 placeholder center resume">
+					<i class="fa fa-video-camera fa-5x fa-fw colorBlue"></i>
+					<h4>#{PrincipalInstagramBean.getNrTotalVideos()}</h4>
+					<p>Total de Vídeos</p>
+				</div>
+				<div class="col-xs-6 col-sm-3 placeholder center resume">
+					<i class="fa fa-group fa-5x fa-fw colorBlue"></i>
+					<h4 class="center">#{PrincipalInstagramBean.getNrTotalUsers()}</h4>
+					<p>Usuários Únicos</p>
+				</div>
+			</div>
+
+			<br/>
+
+			<div class="row">
+
+				<!-- NEW WIDGET START -->
+				<article class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+					<div class="jarviswidget" id="wid-id-7" data-widget-editbutton="false">
+						
+						<header>
+							<span class="widget-icon"> <i class="fa fa-tags"></i> </span>
+							<h2>Contador Distribuição dos Post</h2>
+
+						</header>
+
+						<!-- widget div-->
+						<div>
+
+							<!-- widget edit box -->
+							<div class="jarviswidget-editbox">
+								<!-- This area used as dropdown edit box -->
+
+							</div>
+							<!-- end widget edit box -->
+
+							<!-- widget content -->
+							<div class="widget-body no-padding">
+
+								<table class="table table-bordered table-striped table-condensed table-hover smart-form has-tickbox">
+									<thead>
+										<tr>
+											<th>Ranking</th>
+											<th>#Hashtag</th>
+											<th>Quantidade</th>
+											<th>Galeria</th>
+										</tr>
+									</thead>
+									<tbody>
+										<ui:repeat value="#{PrincipalInstagramBean.topHashtagsPost}" var="him" varStatus="status">
+											<tr>
+												<td style="text-align: center;"><strong>#{him.ranking}</strong></td>
+												<td style="text-align: left;">##{him.hashtag}</td>
+												<td style="text-align: right;"><strong>#{him.nrPost}</strong></td>
+												<td style="text-align: center;"><a href="/TagEvent/instagram/galeria.xhtml?h=#{him.hashtag}"><i class="fa fa-camera"></i></a></td>
+											</tr>
+										</ui:repeat>
+									</tbody>
+								</table>
+
+							</div>
+							<!-- end widget content -->
+
+						</div>
+						<!-- end widget div -->
+
+					</div>
+					<!-- end widget -->
+
+				</article>
+				<!-- WIDGET END -->
+				
+				<!-- NEW WIDGET START -->
+				<article class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+					<div class="jarviswidget" id="wid-id-7" data-widget-editbutton="false">
+						
+						<header>
+							<span class="widget-icon"> <i class="fa fa-group"></i> </span>
+							<h2>Top Usuários</h2>
+
+						</header>
+
+						<!-- widget div-->
+						<div>
+
+							<!-- widget edit box -->
+							<div class="jarviswidget-editbox">
+								<!-- This area used as dropdown edit box -->
+
+							</div>
+							<!-- end widget edit box -->
+
+							<!-- widget content -->
+							<div class="widget-body no-padding">
+
+								<table class="table table-bordered table-striped table-condensed table-hover smart-form has-tickbox">
+										<thead>
+											<tr>
+												<th>Ranking</th>
+												<th>Usuário</th>
+												<th>Nome</th>
+												<th>Quantidade</th>
+											</tr>
+										</thead>
+										<tbody>
+											<ui:repeat value="#{PrincipalInstagramBean.topUsersPost}" var="him" varStatus="status">
+												<tr>
+													<td style="text-align: center;"><strong>#{him.ranking}</strong></td>
+													<td style="text-align: center;"><a href="#{him.urlImagem}" target="_blank"><img src="#{him.urlImagem}" alt="" width="25"/></a></td>
+													<td style="text-align: left;">#{him.nome}</td>
+													<td style="text-align: right;"><strong>#{him.nrPost}</strong></td>
+												</tr>
+											</ui:repeat>
+										</tbody>
+									</table>
+
+							</div>
+							<!-- end widget content -->
+
+						</div>
+						<!-- end widget div -->
+
+					</div>
+					<!-- end widget -->
+
+				</article>
+				<!-- WIDGET END -->
+
+			</div>
+
+			<!-- end row -->
+			<div class="row">
+				<article class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+					<div class="jarviswidget" id="wid-id-7" data-widget-editbutton="false">
+						
+						<header>
+							<span class="widget-icon"> <i class="fa fa-tasks"></i> </span>
+							<h2>Porcentagem Distribuição dos Post</h2>
+
+						</header>
+
+						<!-- widget div-->
+						<div>
+
+							<!-- widget edit box -->
+							<div class="jarviswidget-editbox">
+								<!-- This area used as dropdown edit box -->
+
+							</div>
+							<!-- end widget edit box -->
+
+							<!-- widget content -->
+							<div class="widget-body no-padding">
+
+								<div id="graficoDistribuicaoMidia" class="chart no-padding"></div>								
+
+							</div>
+							<!-- end widget content -->
+
+						</div>
+						<!-- end widget div -->
+
+					</div>
+					<!-- end widget -->
+
+				</article>
+				<!-- WIDGET END -->
+				
+				<article class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+					<div class="jarviswidget" id="wid-id-7" data-widget-editbutton="false">
+						
+						<header>
+							<span class="widget-icon"> <i class="fa fa-tasks"></i> </span>
+							<h2>Porcentagem - Saúde da Marca</h2>
+
+						</header>
+
+						<!-- widget div-->
+						<div>
+
+							<!-- widget edit box -->
+							<div class="jarviswidget-editbox">
+								<!-- This area used as dropdown edit box -->
+
+							</div>
+							<!-- end widget edit box -->
+
+							<!-- widget content -->
+							<div class="widget-body no-padding">
+
+								<div id="graficoSaudeMarca" class="chart no-padding"></div>								
+
+							</div>
+							<!-- end widget content -->
+
+						</div>
+						<!-- end widget div -->
+
+					</div>
+					<!-- end widget -->
+
+				</article>
+			</div>
+			
+			<div class="row">
+
+				<!-- NEW WIDGET START -->
+				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+					<div class="jarviswidget" id="wid-id-7" data-widget-editbutton="false">
+						
+						<header>
+							<span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
+							<h2>Histograma</h2>
+
+						</header>
+
+						<!-- widget div-->
+						<div>
+
+							<!-- widget edit box -->
+							<div class="jarviswidget-editbox">
+								<!-- This area used as dropdown edit box -->
+
+							</div>
+							<!-- end widget edit box -->
+
+							<!-- widget content -->
+							<div class="widget-body no-padding">
+
+								<div id="bar-chart" class="chart"></div>								
+
+							</div>
+							<!-- end widget content -->
+
+						</div>
+						<!-- end widget div -->
+
+					</div>
+					<!-- end widget -->
+
+				</article>
+				<!-- WIDGET END -->
+
+			</div>
+
+			<!-- end row -->
+
+			
+		</div>
+
+	</ui:define>
+	
+	<ui:define name="definicoesPos">
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+		<script src="http://cdn.oesmith.co.uk/morris-0.4.1.min.js"></script>
+		
+		
+		<script src="/TagEvent/template/js/plugin/flot/jquery.flot.cust.js"></script>
+		<script src="/TagEvent/template/js/plugin/flot/jquery.flot.resize.js"></script>
+		<script src="/TagEvent/template/js/plugin/flot/jquery.flot.fillbetween.min.js"></script>
+		<script src="/TagEvent/template/js/plugin/flot/jquery.flot.orderBar.js"></script>
+		<script src="/TagEvent/template/js/plugin/flot/jquery.flot.pie.js"></script>
+		<script src="/TagEvent/template/js/plugin/flot/jquery.flot.tooltip.js"></script>
+		
+		<script>
+
+		/* chart colors default */
+		var $chrt_border_color = "#efefef";
+		var $chrt_grid_color = "#DDD"
+		var $chrt_main = "#E24913";
+		/* red       */
+		var $chrt_second = "#6595b4";
+		/* blue      */
+		var $chrt_third = "#FF9F01";
+		/* orange    */
+		var $chrt_fourth = "#7e9d3a";
+		/* green     */
+		var $chrt_fifth = "#BD362F";
+		/* dark red  */
+		var $chrt_mono = "#000";
+		
+		/* bar chart */
+
+		if ($("#bar-chart").length) {
+
+			var ds = [#{PrincipalInstagramBean.getDadosHistograma()}];
+			var ticks = [#{PrincipalInstagramBean.getDatasHistograma()}];
+						
+			//Display graph
+			$.plot($("#bar-chart"), ds, {
+				colors : [
+					$chrt_second,
+					$chrt_fourth,
+					$chrt_third,
+					$chrt_main,
+					$chrt_fifth
+					],
+				grid : {
+					show : true,
+					hoverable : true,
+					clickable : true,
+					tickColor : $chrt_border_color,
+					borderWidth : 0,
+					borderColor : $chrt_border_color,
+				},
+			    legend: {
+			        noColumns: 0,
+			        position: "nw"
+			    },
+			    xaxis: {
+			        ticks: ticks
+			    },
+				tooltip : true,
+				tooltipOpts : {
+					content : "Número de fotos: <b>%y</b>",
+					defaultTheme : false
+				}
+
+			});
+
+		}
+
+		/* end bar chart */
+
+		// Distribuicao Midia
+		if ($('#graficoDistribuicaoMidia').length) {
+					Morris.Donut({
+						element : 'graficoDistribuicaoMidia',
+						data : [#{PrincipalInstagramBean.getDadosDistribuicaoMidia()}],
+						colors: [
+						           $chrt_second,
+						           $chrt_fourth,
+						           $chrt_third,
+						           $chrt_main,
+						           $chrt_fifth
+						],
+						formatter : function(x) {
+							return x + "%"
+						}
+					});
+				}
+		
+		// donut
+		if ($('#graficoSaudeMarca').length) {
+					Morris.Donut({
+						element : 'graficoSaudeMarca',
+						data : [#{PrincipalInstagramBean.getDadosSaudeMarca()}],
+						colors: [
+						           $chrt_second,
+						           $chrt_fourth,
+						           $chrt_third,
+						           $chrt_main,
+						           $chrt_fifth
+						],
+						formatter : function(x) {
+							return x + "%"
+						}
+					});
+				}
+
+
+
+	  </script>		
+	</ui:define>
+	
+</ui:composition>
+
+</h:html>

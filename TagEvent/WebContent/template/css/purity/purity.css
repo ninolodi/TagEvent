@@ -1,0 +1,54 @@
+.feature-icon {
+text-align: center;
+color: #999;
+-webkit-transition: color .5s ease-in-out;
+-moz-transition: color .5s ease-in-out;
+-ms-transition: color .5s ease-in-out;
+-o-transition: color .5s ease-in-out;
+transition: color .5s ease-in-out;
+}
+
+.colorBlue {
+	color:#81a8c2;
+}
+.colorGreen {
+	color:#92ac58;
+}
+
+.color1 {
+    color:#FF6231;
+}
+
+.color2 {
+    color:#FFC62E;
+}
+
+.color3 {
+    color:#2E9FFF;
+}
+
+.color4 {
+    color:#db1f1f;
+}
+
+.center {
+text-align: center;
+}
+
+.resume h4 {
+padding: 5px;
+margin: 0;
+font-size: 15px;
+font-weight: 700;
+text-transform: none;
+letter-spacing: -1px;
+color: #8E959C;
+text-align: center;
+}
+
+.resume p {
+padding: 0 5px 5px;
+margin: 0;
+color: #8E959C;
+text-align: center;
+}
