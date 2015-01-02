@@ -13,58 +13,31 @@
     <f:event type="preRenderView" listener="#{GaleriaInstagramBean.atualizar()}" />
 </f:metadata>
 
-<ui:composition template="/template/template.xhtml">
+<ui:composition template="/template2/template.xhtml">
 	<ui:define name="definicoesPre">
 		<link rel="stylesheet" type="text/css" href="/TagEvent/template/css/components/galeria/demo.css" />
 		<link rel="stylesheet" type="text/css" href="/TagEvent/template/css/components/galeria/component.css" />
 		<script src="/TagEvent/template/js/components/galeria/modernizr.custom.js"></script>
 	</ui:define>
+		
+    <ui:define name="header">
+    	<div class="col-sm-4">
+		    <h2 class="page-title"><i class="fa-fw fa fa-instagram"></i> Instagram <span>> Galeria</span></h2>
+		</div>
+		<div class="col-sm-8">
+			    <div class="title-action" style="padding-top: 20px;">
+			        <div class="well well-sm">
+						<div class="input-group">
+							<input id="glyph-search" class="form-control" type="text" placeholder="Procure por uma foto..."/>
+							<span class="input-group-addon"><i class="fa fa-fw fa-lg fa-search"></i></span>
+						</div>
+					</div>
+				</div>
+	    </div>
+    </ui:define>
 	
     <ui:define name="content">
-
-		<!-- RIBBON -->
-		<div id="ribbon">
-
-			<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-				<h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-instagram"></i> Instagram <span>> Galeria</span></h1>
-			</div>
-			
-
-			<!-- You can also add more buttons to the ribbon for further usability
-				Example below:
- 			-->
-			<div class="ribbon-button-alignment pull-right">
-				<a class="btn btn-labeled btn-default" href="/TagEvent/instagram/principal.xhtml">
-					<span class="btn-label"> <i class="fa fa-bar-chart-o"></i></span>Principal
-				</a>
-				<a class="btn btn-labeled btn-info" href="/TagEvent/instagram/galeria.xhtml">
-					<span class="btn-label"> <i class="fa fa-camera"></i></span>Galeria
-				</a>
-				<a class="btn btn-labeled btn-default" href="/TagEvent/instagram/monitor.xhtml">
-					<span class="btn-label"> <i class="fa fa-shield"></i></span>Monitor
-				</a>
-				<a class="btn btn-labeled btn-default" href="/TagEvent/instagram/slideshow/slideshow.xhtml" target="_blank">
-					<span class="btn-label"> <i class="fa fa-desktop"></i></span>Slideshow
-				</a>
-				<a class="btn btn-labeled btn-default" href="/TagEvent/instagram/configurar.xhtml">
-					<span class="btn-label"> <i class="fa fa-cogs"></i></span>Configurar
-				</a>
-			</div>
-
-		</div>
-		<!-- END RIBBON -->
-
-		<!-- MAIN CONTENT -->
-		<div id="content">
-
-			<br/>
-			<div class="well well-sm">
-				<div class="input-group">
-					<input id="glyph-search" class="form-control input-lg" type="text" placeholder="Procure por uma foto..."/>
-					<span class="input-group-addon"><i class="fa fa-fw fa-lg fa-search"></i></span>
-				</div>
-			</div>
-			<h:form>
+		<h:form>
 			<div id="grid-gallery" class="grid-gallery">
 				<section class="grid-wrap">
 					<ul class="grid">
@@ -107,14 +80,14 @@
 			</div>	<!-- // grid-gallery -->
 
 			<div class="btn-group btn-group-justified">
-				<h:commandLink class="btn btn-default">
-				    <span class="btn-label"> <i class="fa fa-plus"></i> fotos</span>
+				<h:commandLink class="btn btn-primary btn-block m-t">
+				    <span class="btn-label"> <i class="fa fa-arrow-down"></i> Mais Fotos</span>
 				    <f:ajax event="click" render="@form" listener="#{GaleriaInstagramBean.getMorePhotos()}" onevent="onCompleteGetMorePhotos"/>
 				</h:commandLink>
+				
 			</div>
 			</h:form>
-		</div>
-
+			<br/>
 	</ui:define>
 	
 	<ui:define name="definicoesPos">

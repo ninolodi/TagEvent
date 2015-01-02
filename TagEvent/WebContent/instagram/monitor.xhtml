@@ -7,67 +7,39 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 >
-<ui:composition template="/template/template.xhtml">
+<ui:composition template="/template2/template.xhtml">
 	<ui:define name="definicoesPre">
 		<link rel="stylesheet" type="text/css" href="/TagEvent/template/css/components/galeria/demo.css" />
 		<link rel="stylesheet" type="text/css" href="/TagEvent/template/css/components/galeria/component.css" />
 		<script src="/TagEvent/template/js/components/galeria/modernizr.custom.js"></script>
 	</ui:define>
 	
+    <ui:define name="header">
+    	<div class="col-sm-4">
+		    <h2 class="page-title"><i class="fa-fw fa fa-instagram"></i> Instagram <span>> Monitor</span></h2>
+		</div>
+		<div class="col-sm-8">
+			    <div class="title-action" style="padding-top: 20px;">
+			    	<div class="well well-sm">
+						<div class="btn-group btn-group-justified">
+					       <h:outputLink class="btn btn-danger">
+							    <i class="glyphicon glyphicon-trash"></i> Bloquear Selecionadas
+							    <f:ajax event="click" listener="#{MonitorInstagramBean.bloquearTodos()}" render="@form" onevent="onCompleteDoLayout"/>
+							</h:outputLink>
+							
+							<h:outputLink class="btn btn-success">
+							    <i class="glyphicon glyphicon-ok"></i> Liberar Selecionadas
+							    <f:ajax event="click" listener="#{MonitorInstagramBean.liberarTodos()}" render="@form" onevent="onCompleteDoLayout"/>
+							</h:outputLink>
+						</div>
+					</div>
+				</div>
+	    </div>
+    </ui:define>
 	
     <ui:define name="content">
 
-		<!-- RIBBON -->
-		<div id="ribbon">
-
-			<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-				<h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-instagram"></i> Instagram <span>> Monitor</span></h1>
-			</div>
-			
-
-			<!-- You can also add more buttons to the ribbon for further usability
-				Example below:
- 			-->
-			<div class="ribbon-button-alignment pull-right">
-				<a class="btn btn-labeled btn-default" href="/TagEvent/instagram/principal.xhtml">
-					<span class="btn-label"> <i class="fa fa-bar-chart-o"></i></span>Principal
-				</a>
-				<a class="btn btn-labeled btn-default" href="/TagEvent/instagram/galeria.xhtml">
-					<span class="btn-label"> <i class="fa fa-camera"></i></span>Galeria
-				</a>
-				<a class="btn btn-labeled btn-info" href="/TagEvent/instagram/monitor.xhtml">
-					<span class="btn-label"> <i class="fa fa-shield"></i></span>Monitor
-				</a>
-				<a class="btn btn-labeled btn-default" href="/TagEvent/instagram/slideshow/slideshow.xhtml" target="_blank">
-					<span class="btn-label"> <i class="fa fa-desktop"></i></span>Slideshow
-				</a>
-				<a class="btn btn-labeled btn-default" href="/TagEvent/instagram/configurar.xhtml">
-					<span class="btn-label"> <i class="fa fa-cogs"></i></span>Configurar
-				</a>
-			</div>
-
-		</div>
-		<!-- END RIBBON -->
-
-		<!-- MAIN CONTENT -->
-		<div id="content">
-			<br/>
-
-			<h:form>			
-			<div class="well well-sm">
-				<div class="btn-group btn-group-justified">
-					<h:commandLink action="#{MonitorInstagramBean.bloquearTodos()}" class="btn btn-danger">
-					    <i class="glyphicon glyphicon-trash"></i> Bloquear Selecionadas
-					    <f:ajax event="action" render="@form" onevent="onCompleteDoLayout"/>
-					</h:commandLink>
-					
-					<h:commandLink action="#{MonitorInstagramBean.liberarTodos()}" class="btn btn-success">
-					    <i class="glyphicon glyphicon-ok"></i> Liberar Selecionadas
-					    <f:ajax event="action" render="@form" onevent="onCompleteDoLayout"/>
-					</h:commandLink>
-				</div>
-			</div>
-
+		<h:form>			
 			<div id="grid-gallery" class="grid-gallery">
 				<section class="grid-wrap">
 					<ul class="grid">
@@ -78,14 +50,14 @@
 								<figure class="#{him.instagramFoto.userInstagram.username}"> 
 									<img src="#{him.instagramFoto.urlImagemGrande}" alt="FOTO EXCLUÍDA PELO USUÁRIO" />
 									<figcaption>
-										<h:commandLink action="#{MonitorInstagramBean.bloquear(him.instagramFoto.pkInstagramFoto)}" class="btn btn-danger btn-circle">
+										<h:outputLink class="btn btn-danger btn-circle">
 										    <i class="glyphicon glyphicon-trash"></i>
-										    <f:ajax event="action" render="@form" onevent="onCompleteDoLayout"/>
-										</h:commandLink>
-										<h:commandLink action="#{MonitorInstagramBean.liberar(him.instagramFoto.pkInstagramFoto)}" class="btn btn-success btn-circle">
+										    <f:ajax event="click" listener="#{MonitorInstagramBean.bloquear(him.instagramFoto.pkInstagramFoto)}" render="@form" onevent="onCompleteDoLayout"/>
+										</h:outputLink>
+										<h:outputLink class="btn btn-success btn-circle">
 										    <i class="glyphicon glyphicon-ok"></i>
-										    <f:ajax event="action" render="@form" onevent="onCompleteDoLayout"/>
-										</h:commandLink>
+										    <f:ajax event="click" listener="#{MonitorInstagramBean.liberar(him.instagramFoto.pkInstagramFoto)}" render="@form" onevent="onCompleteDoLayout"/>
+										</h:outputLink>
 										<!--<h:selectBooleanCheckbox id="myonoffswitch#{status}" value="#{him.pk}">
 											<f:ajax event="valueChange" render="@form" onevent="onCompleteDoLayout"/>
 										</h:selectBooleanCheckbox>
@@ -102,10 +74,8 @@
 				</section><!-- // grid-wrap -->
 				
 			</div>	<!-- // grid-gallery -->
-							
-			</h:form>
-			
-		</div>
+						
+		</h:form>
 
 	</ui:define>
 	
@@ -121,8 +91,8 @@
 		
 	    function onCompleteDoLayout(data)
 	    {
-	    	if (data.status == "complete")
-	    		sleep(10, doLayoutMansory);
+	    	if (data.status == "success")
+	    		doLayoutMansory();
 	    }
 		
 		function doLayoutMansory()

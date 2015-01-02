@@ -9,17 +9,11 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-import periodico.FoursquareBot;
-import periodico.GestorEvento;
-import periodico.InstagramBot;
-import periodico.TwitterBot;
-import persistencia.administracao.Pool;
-import propriedades.Propriedades;
 import logs.Logs;
+import persistencia.administracao.Pool;
 import utils.Constantes;
 import utils.PostUtil;
 import br.com.mresolucoes.atta.configuracoes.Configuracoes;
-import br.com.mresolucoes.atta.periodico.Periodico;
 import br.com.mresolucoes.atta.persistencia.conexao.BancoDeDados;
 
 
@@ -55,7 +49,7 @@ public class MainTagEvent implements Servlet
 			PostUtil.inicializar();
 			
 //			Periodico.getInstance().addTarefa(new PeriodicoUsuarioPortal("05:00"));
-			Periodico.getInstance().addTarefa(new InstagramBot(1));
+//			Periodico.getInstance().addTarefa(new InstagramBot(1));
 //			Periodico.getInstance().addTarefa(new FoursquareBot(1));
 //			Periodico.getInstance().addTarefa(new TwitterBot(1));
 //			Periodico.getInstance().addTarefa(new GestorEvento(5));
