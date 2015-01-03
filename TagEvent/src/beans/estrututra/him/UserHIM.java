@@ -14,7 +14,7 @@ public class UserHIM implements Serializable
 	private String cadastrado;
 	private String ultimoAcesso;
 	private long nrAcessos;
-	private int status;
+	private String status;
 
 	public UserHIM() {}
 
@@ -82,11 +82,11 @@ public class UserHIM implements Serializable
 		this.nrAcessos = nrAcessos;
 	}
 
-	public int getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(int status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 

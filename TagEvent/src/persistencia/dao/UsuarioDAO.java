@@ -100,10 +100,10 @@ public class UsuarioDAO extends BaseDAOAtta
 		query.add(" u.login AS login,");
 		query.add(" (CASE WHEN u.tipo=? THEN 'Root' WHEN u.tipo=? THEN 'Admin' ELSE 'Normal' END) AS tipo,", BDConstantes.TIPO_USUARIO_ROOT, BDConstantes.TIPO_USUARIO_ADMIN);
 		query.add(" COALESCE(pf.nome, pj.nomefantasia, '-') AS nome,");
-		query.add(" COALESCE(CAST(pf.nascimento AS varchar), '-') AS nascimento,");
+		query.add(" COALESCE(to_char(pf.nascimento, 'DD/MM/YYYY'), '-') AS nascimento,");
 		query.add(" COALESCE(pf.telefone, '-') AS telefone, ");
-		query.add(" COALESCE(CAST(u.lancamento AS varchar), '-') AS cadastrado,");
-		query.add(" COALESCE(CAST(u.ultimoacesso AS varchar), '-') AS ultimoAcesso,"); 
+		query.add(" COALESCE(to_char(u.lancamento, 'DD/MM/YYYY'), '-') AS cadastrado,");
+		query.add(" COALESCE(to_char(u.ultimoacesso, 'DD/MM/YYYY'), '-') AS ultimoAcesso,"); 
 		query.add(" COALESCE(tabAcesso.qtd, 0) AS nrAcessos");
 		query.add(" FROM Usuario AS u");
 		query.add(" LEFT OUTER JOIN PessoaFisica AS pf ON (pf.fkUsuario = u.pkUsuario)");
