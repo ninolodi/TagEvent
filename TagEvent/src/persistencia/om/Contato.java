@@ -26,6 +26,12 @@ public class Contato implements Serializable
 	@ManyToOne @JoinColumn(name="fkTipoContato")
 	private TipoContato tipoContato;
 
+	@ManyToOne @JoinColumn(name="fkPessoaFisica")
+	private PessoaFisica pessoaFisica;
+
+	@ManyToOne @JoinColumn(name="fkPessoaJuridica")
+	private PessoaJuridica pessoaJuridica;
+
 
 	/*-*-*-* Construtores *-*-*-*/
 	public Contato() { }
@@ -45,4 +51,10 @@ public class Contato implements Serializable
 
 	public TipoContato getTipoContato() { return tipoContato; }
 	public void setTipoContato(TipoContato tipoContato) { this.tipoContato = tipoContato; }
+
+	public PessoaFisica getPessoaFisica() { return pessoaFisica; }
+	public void setPessoaFisica(PessoaFisica pessoaFisica) { this.pessoaFisica = pessoaFisica; }
+
+	public PessoaJuridica getPessoaJuridica() { return pessoaJuridica; }
+	public void setPessoaJuridica(PessoaJuridica pessoaJuridica) { this.pessoaJuridica = pessoaJuridica; }
 }

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 
 import logs.Logs;
 import persistencia.dao.InstagramDAO;
@@ -19,7 +19,7 @@ import br.com.mresolucoes.atta.persistencia.conexao.servidores.PostgresJDBC;
 import br.com.mresolucoes.atta.persistencia.conexao.servidores.base.BaseJDBC;
 
 @ManagedBean(name="GaleriaInstagramBean")
-@RequestScoped
+@ViewScoped
 public class GaleriaInstagramBean implements Serializable
 {
 	private static final long serialVersionUID = 5516846833366281393L;

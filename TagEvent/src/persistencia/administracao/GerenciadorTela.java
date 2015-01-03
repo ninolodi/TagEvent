@@ -46,7 +46,7 @@ import br.com.mresolucoes.atta.persistencia.administracao.comparaBases.ComparaBa
 public abstract class GerenciadorTela extends JFrame
 {
 	/*-*-*-* Variaveis de Configuracao *-*-*-*/
-	public static String pathWorkspace = "D:/Programacao/Flex/Atta/";
+	public static String pathWorkspace = "D:/Dropbox/Dropbox/Git/";
 	protected static String pathEspecifico = null;
 	protected static String nomeEspecifico = null;
 	protected static String pathAplication = null;

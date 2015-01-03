@@ -33,9 +33,6 @@ public class Usuario implements Serializable
 	private int status = BDConstantesAtta.STATUS_ATIVO;
 
 	@OneToMany(mappedBy="usuario")
-	private List<PessoaFisica> pessoaFisicas;
-
-	@OneToMany(mappedBy="usuario")
 	private List<PessoaJuridica> pessoaJuridicas;
 
 	@OneToMany(mappedBy="usuario")
@@ -55,6 +52,9 @@ public class Usuario implements Serializable
 
 	@OneToMany(mappedBy="usuario")
 	private List<Acesso> acessos;
+
+	@OneToMany(mappedBy="usuario")
+	private List<PessoaFisica> pessoaFisicas;
 
 
 	/*-*-*-* Construtores *-*-*-*/
@@ -82,9 +82,6 @@ public class Usuario implements Serializable
 	public int getStatus() { return status; }
 	public void setStatus(int status) { this.status = status; }
 
-	public List<PessoaFisica> getPessoaFisicas() { if(pessoaFisicas==null) { pessoaFisicas = new ArrayList<PessoaFisica>(); } return pessoaFisicas; }
-	public void setPessoaFisicas(List<PessoaFisica> pessoaFisicas) { this.pessoaFisicas = pessoaFisicas; }
-
 	public List<PessoaJuridica> getPessoaJuridicas() { if(pessoaJuridicas==null) { pessoaJuridicas = new ArrayList<PessoaJuridica>(); } return pessoaJuridicas; }
 	public void setPessoaJuridicas(List<PessoaJuridica> pessoaJuridicas) { this.pessoaJuridicas = pessoaJuridicas; }
 
@@ -105,4 +102,7 @@ public class Usuario implements Serializable
 
 	public List<Acesso> getAcessos() { if(acessos==null) { acessos = new ArrayList<Acesso>(); } return acessos; }
 	public void setAcessos(List<Acesso> acessos) { this.acessos = acessos; }
+
+	public List<PessoaFisica> getPessoaFisicas() { if(pessoaFisicas==null) { pessoaFisicas = new ArrayList<PessoaFisica>(); } return pessoaFisicas; }
+	public void setPessoaFisicas(List<PessoaFisica> pessoaFisicas) { this.pessoaFisicas = pessoaFisicas; }
 }

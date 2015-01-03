@@ -8,6 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Endereco implements Serializable
@@ -33,6 +36,12 @@ public class Endereco implements Serializable
 
 	@ManyToOne @JoinColumn(name="fkTipoEndereco")
 	private TipoEndereco tipoEndereco;
+
+	@OneToMany(mappedBy="endereco")
+	private List<PessoaJuridica> pessoaJuridicas;
+
+	@OneToMany(mappedBy="endereco")
+	private List<PessoaFisica> pessoaFisicas;
 
 
 	/*-*-*-* Construtores *-*-*-*/
@@ -71,4 +80,10 @@ public class Endereco implements Serializable
 
 	public TipoEndereco getTipoEndereco() { return tipoEndereco; }
 	public void setTipoEndereco(TipoEndereco tipoEndereco) { this.tipoEndereco = tipoEndereco; }
+
+	public List<PessoaJuridica> getPessoaJuridicas() { if(pessoaJuridicas==null) { pessoaJuridicas = new ArrayList<PessoaJuridica>(); } return pessoaJuridicas; }
+	public void setPessoaJuridicas(List<PessoaJuridica> pessoaJuridicas) { this.pessoaJuridicas = pessoaJuridicas; }
+
+	public List<PessoaFisica> getPessoaFisicas() { if(pessoaFisicas==null) { pessoaFisicas = new ArrayList<PessoaFisica>(); } return pessoaFisicas; }
+	public void setPessoaFisicas(List<PessoaFisica> pessoaFisicas) { this.pessoaFisicas = pessoaFisicas; }
 }

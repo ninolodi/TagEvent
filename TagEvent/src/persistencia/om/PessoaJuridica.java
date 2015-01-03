@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import br.com.mresolucoes.atta.utils.BDConstantesAtta;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.OneToMany;
 
 @Entity
 public class PessoaJuridica implements Serializable
@@ -29,6 +32,12 @@ public class PessoaJuridica implements Serializable
 
 	@ManyToOne @JoinColumn(name="fkUsuario")
 	private Usuario usuario;
+
+	@ManyToOne @JoinColumn(name="fkEndereco")
+	private Endereco endereco;
+
+	@OneToMany(mappedBy="pessoaJuridica")
+	private List<Contato> contatos;
 
 
 	/*-*-*-* Construtores *-*-*-*/
@@ -58,4 +67,10 @@ public class PessoaJuridica implements Serializable
 
 	public Usuario getUsuario() { return usuario; }
 	public void setUsuario(Usuario usuario) { this.usuario = usuario; }
+
+	public Endereco getEndereco() { return endereco; }
+	public void setEndereco(Endereco endereco) { this.endereco = endereco; }
+
+	public List<Contato> getContatos() { if(contatos==null) { contatos = new ArrayList<Contato>(); } return contatos; }
+	public void setContatos(List<Contato> contatos) { this.contatos = contatos; }
 }

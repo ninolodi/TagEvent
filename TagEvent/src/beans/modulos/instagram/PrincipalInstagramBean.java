@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Vector;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.RequestScoped;
 
 import logs.Logs;
 import persistencia.dao.InstagramDAO;
@@ -26,7 +26,7 @@ import br.com.mresolucoes.atta.utils.BDConstantesAtta;
 import br.com.mresolucoes.atta.utils.LogsUtil;
 
 @ManagedBean(name="PrincipalInstagramBean")
-@ViewScoped
+@RequestScoped
 public class PrincipalInstagramBean
 {
 	private Long pkEvento = null;

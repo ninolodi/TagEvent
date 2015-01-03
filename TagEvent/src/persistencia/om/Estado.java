@@ -33,9 +33,6 @@ public class Estado implements Serializable
 	@OneToMany(mappedBy="estado")
 	private List<Cidade> cidades;
 
-	@OneToMany(mappedBy="estadoRGOrgaoEmissor")
-	private List<PessoaFisica> pessoaFisicas;
-
 
 	/*-*-*-* Construtores *-*-*-*/
 	public Estado() { }
@@ -65,7 +62,4 @@ public class Estado implements Serializable
 
 	public List<Cidade> getCidades() { if(cidades==null) { cidades = new ArrayList<Cidade>(); } return cidades; }
 	public void setCidades(List<Cidade> cidades) { this.cidades = cidades; }
-
-	public List<PessoaFisica> getPessoaFisicas() { if(pessoaFisicas==null) { pessoaFisicas = new ArrayList<PessoaFisica>(); } return pessoaFisicas; }
-	public void setPessoaFisicas(List<PessoaFisica> pessoaFisicas) { this.pessoaFisicas = pessoaFisicas; }
 }

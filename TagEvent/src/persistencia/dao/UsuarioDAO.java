@@ -1,8 +1,14 @@
 package persistencia.dao;
 
+import java.util.List;
+
 import persistencia.om.Usuario;
+import utils.BDConstantes;
+import beans.estrututra.him.UserHIM;
+import br.com.mresolucoes.atta.persistencia.conexao.servidores.base.BaseJDBC;
 import br.com.mresolucoes.atta.persistencia.dao.base.BaseDAOAtta;
 import br.com.mresolucoes.atta.persistencia.utils.QuerySQL;
+import br.com.mresolucoes.atta.utils.BDConstantesAtta;
 import br.com.mresolucoes.atta.utils.ConstantesAtta;
 import criptografia.CriptografiaSimples;
 
@@ -79,4 +85,31 @@ public class UsuarioDAO extends BaseDAOAtta
 		}
 	}
 	
+	/**
+	 * Obtem uma lista com todos os usuarios cadastrados na base de dados
+	 * @param login
+	 * @param profundidade
+	 * @return primeiro usuario que possui o login
+	 * @throws Exception
+	 */
+	public List<UserHIM> getUsuariosCadastrados(BaseJDBC baseJDBC) throws Exception
+	{		
+		QuerySQL query = new QuerySQL();
+		query.add("SELECT"); 
+		query.add(" (CASE WHEN u.status=? THEN 'Ativo' WHEN u.status=? THEN 'Removido' ELSE 'Indefinido' END) AS status,", BDConstantesAtta.STATUS_ATIVO, BDConstantesAtta.STATUS_REMOVIDO);
+		query.add(" u.login AS login,");
+		query.add(" (CASE WHEN u.tipo=? THEN 'Root' WHEN u.tipo=? THEN 'Admin' ELSE 'Normal' END) AS tipo,", BDConstantes.TIPO_USUARIO_ROOT, BDConstantes.TIPO_USUARIO_ADMIN);
+		query.add(" COALESCE(pf.nome, pj.nomefantasia, '-') AS nome,");
+		query.add(" COALESCE(CAST(pf.nascimento AS varchar), '-') AS nascimento,");
+		query.add(" COALESCE(pf.telefone, '-') AS telefone, ");
+		query.add(" COALESCE(CAST(u.lancamento AS varchar), '-') AS cadastrado,");
+		query.add(" COALESCE(CAST(u.ultimoacesso AS varchar), '-') AS ultimoAcesso,"); 
+		query.add(" COALESCE(tabAcesso.qtd, 0) AS nrAcessos");
+		query.add(" FROM Usuario AS u");
+		query.add(" LEFT OUTER JOIN PessoaFisica AS pf ON (pf.fkUsuario = u.pkUsuario)");
+		query.add(" LEFT OUTER JOIN PessoaJuridica AS pj ON (pj.fkUsuario = u.pkUsuario)");
+		query.add(" LEFT OUTER JOIN (SELECT fkUsuario AS pk, COUNT(pkAcesso) AS qtd FROM Acesso GROUP BY fkUsuario) AS tabAcesso ON (tabAcesso.pk = u.pkUsuario)");
+		query.add(" ORDER BY nome, login, nascimento");
+		return obtem(baseJDBC, UserHIM.class, query, -1);
+	}
 }
