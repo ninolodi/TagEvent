@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"  
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+<ui:composition template="/template2/template.xhtml">
+	<ui:define name="definicoesPre">
+
+	</ui:define>
+	
+    <ui:define name="header">
+    	<div class="col-sm-4">
+		    <h2><i class="fa-fw fa fa-instagram"></i> <span>Slideshow</span></h2>
+		    <ol class="breadcrumb">
+                <li>
+                    <a href="#">Instagram</a>
+                </li>
+                <li class="active">
+                    <strong>Slideshow</strong>
+                </li>
+            </ol>
+		</div>
+		<div class="col-sm-8">
+			    <div class="title-action">
+					<h:outputLink class="btn btn-primary hidden">
+					    <i class="glyphicon glyphicon-ok"></i> Salvar Configuração
+					    <f:ajax event="click" listener="#{SlideshowInstagramBean.salvar()}" render=":formPrincipal" onevent="onCompleteDoLayout"/>
+					</h:outputLink>
+				</div>
+	    </div>
+    </ui:define>
+	
+    <ui:define name="content">
+
+		<h:form id="formPrincipal">			
+            <div class="row">
+	            <div class="col-lg-6">
+	                <div class="ibox float-e-margins">
+	                    <div class="ibox-title">
+	                        <h5>Layout Básico - <small>1 Foto</small></h5>
+	                        <div class="ibox-tools">
+	                            
+	                        </div>
+	                    </div>
+	                    <div class="ibox-content">
+                            <div class="row">
+	                            <img class="col-lg-6" src="/TagEvent/template2/img/slideshow/modelo1.jpg" alt="Layout Modelo 1 Foto"/>
+	                            <div class="col-lg-6 well well-sm">
+	                                <h3>
+	                                    Slideshow Básico - <strong>1 Foto</strong>
+	                                </h3>
+	                                Características:
+	                                <ul>
+			                            <li>1 foto quadrada</li>
+			                            <li>Sem identificação do usuário</li>
+			                            <li>Sem comentário do usuário</li>
+			                            <li>Sem espaço para logotipos</li>
+		                            </ul>								
+	                            </div>
+	                            
+	                            <h:outputLink class="btn btn-primary" value="slideshow/800x600/modelo1.xhtml" target="_blank" style="margin-right: 5px;">
+								    <i class="fa fa-desktop"></i> 800x600
+								</h:outputLink>								
+								<h:outputLink class="btn btn-primary" value="slideshow/1024x768/modelo1.xhtml" target="_blank">
+								    <i class="fa fa-desktop"></i> 1024x768
+								</h:outputLink>
+	                        </div>
+                        </div>
+	                </div>
+	            </div>
+	            <div class="col-lg-6">
+	                <div class="ibox float-e-margins">
+	                    <div class="ibox-title">
+	                        <h5>Layout Básico - <small>2 Fotos</small></h5>
+	                        <div class="ibox-tools">
+	                            
+	                        </div>
+	                    </div>
+	                    <div class="ibox-content">
+	                        <div class="row">
+	                            <img class="col-lg-6" src="/TagEvent/template2/img/slideshow/modelo2.jpg" alt="Layout Modelo 2 Fotos"/>
+	                            <div class="col-lg-6 well well-sm">
+	                                <h3>
+	                                    Slideshow Básico - <strong>2 Fotos</strong>
+	                                </h3>
+	                                Características:
+	                                <ul>
+			                            <li>2 fotos quadradas</li>
+			                            <li>Sem identificação do usuário</li>
+			                            <li>Sem comentário do usuário</li>
+			                            <li>Sem espaço para logotipos</li>
+		                            </ul>								
+	                            </div>
+	                            
+	                            <h:outputLink class="btn btn-primary" value="slideshow/800x600/modelo2.xhtml" target="_blank" style="margin-right: 5px;">
+								    <i class="fa fa-desktop"></i> 800x600
+								</h:outputLink>								
+								<h:outputLink class="btn btn-primary" value="slideshow/1024x768/modelo2.xhtml" target="_blank">
+								    <i class="fa fa-desktop"></i> 1024x768
+								</h:outputLink>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+            </div>			
+			<div class="row">
+	            <div class="col-lg-6">
+	                <div class="ibox float-e-margins">
+	                    <div class="ibox-title">
+	                        <h5>Layout Básico - <small>4 Fotos</small></h5>
+	                        <div class="ibox-tools">
+	                            
+	                        </div>
+	                    </div>
+	                    <div class="ibox-content">
+                            <div class="row">
+	                            <img class="col-lg-6" src="/TagEvent/template2/img/slideshow/modelo4.jpg" alt="Layout Modelo 4 Fotos"/>
+								<div class="col-lg-6 well well-sm">
+	                                <h3>
+	                                    Slideshow Básico - <strong>4 Fotos</strong>
+	                                </h3>
+	                                Características:
+	                                <ul>
+			                            <li>4 fotos quadradas</li>
+			                            <li>Sem identificação do usuário</li>
+			                            <li>Sem comentário do usuário</li>
+			                            <li>Sem espaço para logotipos</li>
+		                            </ul>								
+	                            </div>
+	                            
+	                            <h:outputLink class="btn btn-primary" value="slideshow/800x600/modelo4.xhtml" target="_blank" style="margin-right: 5px;">
+								    <i class="fa fa-desktop"></i> 800x600
+								</h:outputLink>								
+								<h:outputLink class="btn btn-primary" value="slideshow/1024x768/modelo4.xhtml" target="_blank">
+								    <i class="fa fa-desktop"></i> 1024x768
+								</h:outputLink>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="col-lg-6">
+	                <div class="ibox float-e-margins">
+	                    <div class="ibox-title">
+	                        <h5>Layout Básico - <small>9 Fotos</small></h5>
+	                        <div class="ibox-tools">
+	                            
+	                        </div>
+	                    </div>
+	                    <div class="ibox-content">
+	                        <div class="row">
+	                            <img class="col-lg-6" src="/TagEvent/template2/img/slideshow/modelo9.jpg" alt="Layout Modelo 9 Fotos"/>
+	                            <div class="col-lg-6 well well-sm">
+	                                <h3>
+	                                    Slideshow Básico - <strong>9 Fotos</strong>
+	                                </h3>
+	                                Características:
+	                                <ul>
+			                            <li>9 fotos quadradas</li>
+			                            <li>Sem identificação do usuário</li>
+			                            <li>Sem comentário do usuário</li>
+			                            <li>Sem espaço para logotipos</li>
+		                            </ul>								
+	                            </div>
+	                            
+	                            <h:outputLink class="btn btn-primary" value="slideshow/800x600/modelo9.xhtml" target="_blank" style="margin-right: 5px;">
+								    <i class="fa fa-desktop"></i> 800x600
+								</h:outputLink>								
+								<h:outputLink class="btn btn-primary" value="slideshow/1024x768/modelo9.xhtml" target="_blank">
+								    <i class="fa fa-desktop"></i> 1024x768
+								</h:outputLink>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	            </div>
+	            
+	            <div class="row">
+	            	<div class="col-lg-6">
+		                <div class="ibox float-e-margins">
+		                    <div class="ibox-title">
+		                        <h5>Layout Premium - <small>1 Foto</small></h5>
+		                        <div class="ibox-tools">
+		                            
+		                        </div>
+		                    </div>
+		                    <div class="ibox-content">
+		                        <div class="row">
+		                            <img class="col-lg-6" src="/TagEvent/template2/img/slideshow/modelo1_premium.jpg" alt="Layout Modelo 1 Foto Premium" style="height: 206px; padding-left: 5px; padding-right: 5px;"/>
+		                            <div class="col-lg-6 well well-sm">
+		                                <h3>
+		                                    Slideshow Premium - <strong>1 Foto</strong>
+		                                </h3>
+		                                Características:
+		                                <ul>
+				                            <li>1 foto quadrada a direita</li>
+				                            <li>U - Identificação do usuário</li>
+				                            <li>C - Comentário do usuário</li>
+				                            <li>L - Espaço para logotipos</li>
+			                            </ul>								
+		                            </div>
+		                            
+		                            <h:outputLink class="btn btn-primary" value="slideshow/800x600/modelo1p.xhtml" target="_blank" style="margin-right: 5px;">
+									    <i class="fa fa-desktop"></i> 800x600
+									</h:outputLink>								
+									<h:outputLink class="btn btn-primary" value="slideshow/1024x768/modelo1p.xhtml" target="_blank">
+									    <i class="fa fa-desktop"></i> 1024x768
+									</h:outputLink>
+		                        </div>
+		                    </div>
+		                </div>
+	                </div>
+	      			<div class="col-lg-6">
+	                <div class="ibox float-e-margins">
+	                    <div class="ibox-title">
+	                        <h5>Layout Premium - <small>1 Foto</small></h5>
+	                        <div class="ibox-tools">
+	                            
+	                        </div>
+	                    </div>
+	                    <div class="ibox-content">
+	                        <div class="row">
+	                            <img class="col-lg-6" src="/TagEvent/template2/img/slideshow/modelo1_2_premium.jpg" alt="Layout Modelo 1 Foto Premium" style="height: 206px; padding-left: 5px; padding-right: 5px;"/>
+	                            <div class="col-lg-6 well well-sm">
+	                                <h3>
+	                                    Slideshow Premium - <strong>1 Foto</strong>
+	                                </h3>
+	                                Características:
+	                                <ul>
+			                            <li>1 foto quadrada a esquerda</li>
+			                            <li>U - Identificação do usuário</li>
+			                            <li>C - Comentário do usuário</li>
+			                            <li>L - Espaço para logotipos</li>
+		                            </ul>								
+	                            </div>
+	                            
+	                            <h:outputLink class="btn btn-primary" value="slideshow/800x600/modelo1p2.xhtml" target="_blank" style="margin-right: 5px;">
+								    <i class="fa fa-desktop"></i> 800x600
+								</h:outputLink>								
+								<h:outputLink class="btn btn-primary" value="slideshow/1024x768/modelo1p2.xhtml" target="_blank">
+								    <i class="fa fa-desktop"></i> 1024x768
+								</h:outputLink>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	            
+	            <div class="row">
+		            <div class="col-lg-6">
+		                <div class="ibox float-e-margins">
+		                    <div class="ibox-title">
+		                        <h5>Layout Premium - <small>2 Fotos</small></h5>
+		                        <div class="ibox-tools">
+		                            
+		                        </div>
+		                    </div>
+		                    <div class="ibox-content">
+		                        <div class="row">
+		                            <img class="col-lg-6" src="/TagEvent/template2/img/slideshow/modelo2_premium.jpg" alt="Layout Modelo 2 Fotos Premium"/>
+		                            <div class="col-lg-6 well well-sm">
+		                                <h3>
+		                                    Slideshow Premium - <strong>2 Fotos</strong>
+		                                </h3>
+		                                Características:
+		                                <ul>
+				                            <li>2 fotos quadradas</li>
+				                            <li>U - Identificação do usuário</li>
+				                            <li>C - Comentário do usuário</li>
+				                            <li>L - Espaço para logotipos</li>
+			                            </ul>								
+		                            </div>
+		                            
+		                            <h:outputLink class="btn btn-primary" value="slideshow/800x600/modelo2p.xhtml" target="_blank" style="margin-right: 5px;">
+									    <i class="fa fa-desktop"></i> 800x600
+									</h:outputLink>								
+									<h:outputLink class="btn btn-primary" value="slideshow/1024x768/modelo2p.xhtml" target="_blank">
+									    <i class="fa fa-desktop"></i> 1024x768
+									</h:outputLink>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		            <div class="col-lg-6">
+		                <div class="ibox float-e-margins">
+		                    <div class="ibox-title">
+		                        <h5>Layout Business - <small>X Fotos</small></h5>
+		                        <div class="ibox-tools">
+		                            
+		                        </div>
+		                    </div>
+		                    <div class="ibox-content">
+		                        <div class="row">
+		                            <img class="col-lg-6" src="/TagEvent/template2/img/slideshow/modeloBusiness.jpg" alt="Layout Modelo 2 Fotos Premium"/>
+		                            <div class="col-lg-6 well well-sm">
+		                                <h3>
+		                                    Slideshow Business - <strong>X Fotos</strong>
+		                                </h3>
+		                                Layout será customizado conforme as solicitações realizadas pelo cliente.
+		                                <ul>
+				                            <li>Quantidade de fotos?</li>
+				                            <li>Identificação do usuário?</li>
+				                            <li>Comentário do usuário?</li>
+				                            <li>Quantidade de logotipos?</li>
+				                            <li>Haverá identidade visual?</li>
+			                            </ul>
+		                            </div>
+		                            
+		                            <div class="row">
+		                            	<div class="col-lg-12 text-center">
+		                            		<h:outputLink class="btn btn-primary" value="slideshow/solicitarbusiness.xhtml" style="margin-right: 5px;">
+											    <i class="fa fa-desktop"></i> Solicitar Layout Business
+											</h:outputLink>								
+		                            	</div>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+	            </div>
+            </div>	
+
+		</h:form>
+
+	</ui:define>
+	
+	<ui:define name="definicoesPos">
+		<script type="text/javascript">
+		
+	    function onCompleteDoLayout(data)
+	    {
+	    	if (data.status == "success")
+	    		doLayoutMansory();
+	    }
+		
+		</script>
+	</ui:define>
+	
+</ui:composition>
+
+</h:html>

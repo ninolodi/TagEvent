@@ -7,157 +7,99 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 >
-<ui:composition template="/template/template.xhtml">
+<ui:composition template="/template2/template.xhtml">
 	<ui:define name="definicoesPre">
 
 	</ui:define>
 	
+	<ui:define name="header">
+    	<div class="col-sm-4">
+		    <h2 class="page-title"><i class="fa-fw fa fa-instagram"></i> Instagram <span>> Configurar</span></h2>
+		</div>
+		<div class="col-sm-8">
+		    <div class="title-action" style="padding-top: 20px;">
+		 		
+			</div>
+	    </div>
+    </ui:define>
+	
     <ui:define name="content">
 
-		<!-- RIBBON -->
-		<div id="ribbon">
+		<div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>#Hashtags</h5>
+                    <div class="ibox-tools">
+                        
+                    </div>
+                </div>
+                <div class="ibox-content">
+	                <div class="form-group">
+		                <label class="font-noraml">Hashtag(s) utilizadas:</label>
+		                <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>#Hashtag</th>
+                                        <th>Ação</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>Project</td>
+                                        <td><a href="#"><i class="fa fa-remove text-navy"></i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" class="i-checks" name="input[]"/></td>
+                                        <td>Alpha project</td>
+                                        <td><span class="pie">6,9</span></td>
+                                        <td>40%</td>
+                                        <td>Jul 16, 2013</td>
+                                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" class="i-checks" name="input[]"/></td>
+                                        <td>Betha project</td>
+                                        <td><span class="pie">3,1</span></td>
+                                        <td>75%</td>
+                                        <td>Jul 18, 2013</td>
+                                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox" class="i-checks" name="input[]"/></td>
+                                        <td>Gamma project</td>
+                                        <td><span class="pie">4,9</span></td>
+                                        <td>18%</td>
+                                        <td>Jul 22, 2013</td>
+                                        <td><a href="#"><i class="fa fa-check text-navy"></i></a></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
 
-			<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-				<h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-instagram"></i> Instagram <span>> Configurar</span></h1>
-			</div>
-						
-			<!-- You can also add more buttons to the ribbon for further usability
-				Example below:
- 			-->
-			<div class="ribbon-button-alignment pull-right">
-				<a class="btn btn-labeled btn-default" href="/TagEvent/instagram/principal.xhtml">
-					<span class="btn-label"> <i class="fa fa-bar-chart-o"></i></span>Principal
-				</a>
-				<a class="btn btn-labeled btn-default" href="/TagEvent/instagram/galeria.xhtml">
-					<span class="btn-label"> <i class="fa fa-camera"></i></span>Galeria
-				</a>
-				<a class="btn btn-labeled btn-default" href="/TagEvent/instagram/monitor.xhtml">
-					<span class="btn-label"> <i class="fa fa-shield"></i></span>Monitor
-				</a>
-				<a class="btn btn-labeled btn-default" href="/TagEvent/instagram/slideshow/slideshow.xhtml" target="_blank">
-					<span class="btn-label"> <i class="fa fa-desktop"></i></span>Slideshow
-				</a>
-				<a class="btn btn-labeled btn-info" href="/TagEvent/instagram/configurar.xhtml">
-					<span class="btn-label"> <i class="fa fa-cogs"></i></span>Configurar
-				</a>
-			</div>
+                        </div>
+		                
+	                </div>
 
-		</div>
-		<!-- END RIBBON -->
-
-		<!-- MAIN CONTENT -->
-		<div id="content">
-			<br/>
-			<div class="row">		
-				
-						<!-- NEW COL START -->
-						<article class="col-sm-12 col-md-12 col-lg-6">
-				
-							<!-- Widget ID (each widget will need unique ID)-->
-							<div class="jarviswidget" id="wid-id-3" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
-								<!-- widget options:
-								usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
-				
-								data-widget-colorbutton="false"
-								data-widget-editbutton="false"
-								data-widget-togglebutton="false"
-								data-widget-deletebutton="false"
-								data-widget-fullscreenbutton="false"
-								data-widget-custombutton="false"
-								data-widget-collapsed="true"
-								data-widget-sortable="false"
-				
-								-->
-								<header>
-									<span class="widget-icon"> <i class="fa fa-edit"></i> </span>
-									<h2>Configurações Instagram</h2>
-				
-								</header>
-				
-								<!-- widget div-->
-								<div>
-				
-									<!-- widget edit box -->
-									<div class="jarviswidget-editbox">
-										<!-- This area used as dropdown edit box -->
-				
-									</div>
-									<!-- end widget edit box -->
-				
-									<!-- widget content -->
-									<div class="widget-body no-padding">
-				
-										<form class="smart-form">
-											<header>
-												#Hashtags
-											</header>
-				
-											<fieldset>
-											
-											</fieldset>
-											
-											<header>
-												Slideshow
-											</header>
-				
-											<fieldset>
-												<section>
-													<label class="label">Ciclo de Fotos</label>
-													<label class="input"> <i class="icon-append fa fa-question-circle"></i>
-														<input type="text" placeholder="Digite o número de fotos para definir o tamanho do ciclo de fotos que serão publicadas no slideshow..."/>
-														<b class="tooltip tooltip-top-right">
-															<i class="fa fa-warning txt-color-teal"></i> 
-															Ciclo de fotos é o número das últimas X fotos que deverão ser publicadas no <i>slideshow</i></b> 
-													</label>
-												</section>
-												
-												<section>
-													<label class="label">Monitoramento de Fotos</label>
-													<label class="input"> 
-														<i class="icon-append fa fa-question-circle"></i>
-														<input type="checkbox"/>
-														<b class="tooltip tooltip-top-right">
-															<i class="fa fa-warning txt-color-teal"></i> 
-															Monitoramento de fotos é utilizado para monitorar as fotos dos usuários antes das mesmas serem publicadas no <i>slideshow</i>
-														</b> 
-													</label>
-												</section>
-						
-												<section>
-													<label class="label">Layout Slideshow</label>
-													<label class="input"> <i class="icon-append fa fa-question-circle"></i>
-														<input type="text" placeholder="Insira o código html para configurar o seu slideshow"/>
-														<b class="tooltip tooltip-right">
-															<i class="fa fa-warning txt-color-teal"></i> 
-															Layout</b> 
-													</label>
-												</section>
-				
-											</fieldset>
-				
-											
-				
-										</form>
-				
-									</div>
-									<!-- end widget content -->
-				
-								</div>
-								<!-- end widget div -->
-				
-							</div>
-							<!-- end widget -->
-				
-						</article>
-						<!-- END COL -->
-			</div>
-			
-		</div>
+                </div>
 
 	</ui:define>
 	
 	<ui:define name="definicoesPos">
-			
+			<script>
+	        $(document).ready(function(){
+
+				var config = {
+		                '.chosen-select'           : {},
+		                '.chosen-select-deselect'  : {allow_single_deselect:true},
+		                '.chosen-select-no-single' : {disable_search_threshold:10},
+		                '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+		                '.chosen-select-width'     : {width:"95%"}
+		            }
+		            for (var selector in config) {
+		                $(selector).chosen(config[selector]);
+		            }
+	        });
+			</script>
 	</ui:define>
 	
 </ui:composition>

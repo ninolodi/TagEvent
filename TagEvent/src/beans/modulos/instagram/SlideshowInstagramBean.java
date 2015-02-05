@@ -13,6 +13,7 @@ import persistencia.om.Instagram;
 import persistencia.om.InstagramConfiguracao;
 import persistencia.om.InstagramFoto;
 import utils.BDConstantes;
+import utils.DoubleUtil;
 import utils.data.Data;
 import br.com.mresolucoes.atta.configuracoes.Configuracoes;
 import br.com.mresolucoes.atta.persistencia.conexao.servidores.PostgresJDBC;
@@ -82,6 +83,60 @@ public class SlideshowInstagramBean implements Serializable
 		}		
 	}
 
+	public String printCarossel(long qtdFotos)
+	{
+		StringBuffer print = new StringBuffer();
+		InstagramFoto foto = null;
+		for (int i = 0; i < fotosInstagram.size(); i++) 
+		{
+			foto = fotosInstagram.get(i);
+			
+			if(i==0) 
+			{ 
+				print.append(newItemGallery(true));
+				print.append(newRow());
+			}
+			else if(i%qtdFotos==0) 
+			{
+				print.append(close());
+				print.append(close());
+				print.append(newItemGallery(false));
+				print.append(newRow());
+			}
+			
+			print.append(newPhoto(foto, qtdFotos));
+            
+			if(i==(fotosInstagram.size()-1))
+			{
+				print.append(close());
+				print.append(close());
+			}
+		}
+		
+		return print.toString();
+	}
+	
+	public String newItemGallery(boolean valor)
+	{ return "<div class='item gallery"+(valor ? " active" : "")+"'>"; }
+
+	public String newRow()
+	{ return "<div class='row'>"; }
+	
+	public String newPhoto(InstagramFoto foto, long qtdFoto)
+	{ return "<div "+(sizePhoto(qtdFoto))+" class='col-sm-"+(int)(12/qtdFoto)+" middle-box text-center'><img alt='image' class='img-responsive' src='"+foto.getUrlImagemGrande()+"'></div>"; }
+
+	public String close()
+	{ return "</div>"; }
+
+	public String sizePhoto(long qtdFoto)
+	{
+		if(qtdFoto==1) 	{ return "style='width: 636px; height: 636px;'"; }
+		if(qtdFoto==2) 	{ return "style='width: 512px; height: 512px;'"; }
+		if(qtdFoto==6) 	{ return "style='width: 318px; height: 318px;'"; }
+		if(qtdFoto==12) { return "style='width: 212px; height: 212px;'"; }
+		return null;
+	}
+	
 	/*-*-* Getters and Setters *-*-*/
 	public List<InstagramFoto> getFotosInstagram() {
 		return fotosInstagram;
