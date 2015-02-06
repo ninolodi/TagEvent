@@ -18,6 +18,8 @@
 	var cnt = 0;
 	$(document).ready(function()
 	{
+		$('body').css('overflow','hidden');
+		
 		$('#myCarousel').carousel();
 		cnt = $('#myCarousel .item').length;
 		$("#myCarousel").on("slide.bs.carousel", function() 
@@ -30,8 +32,42 @@
 			}
 		});
 	});
+	
 	</script>
 	<style type="text/css">
+	
+	@font-face {
+	  font-family: ErasDemi;
+	  src: url(/TagEvent/template/fonts/ERASDEMI.TTF);
+	}
+		
+	#mask {
+	  position:absolute;
+	  left:0;
+	  top:0;
+	  width: 100%;
+	  height: 100%;
+	  background-color:#000;
+	}
+
+	#textoPerfilPublico p {
+		font-family: ErasDemi;
+		text-align: center;
+		font-size: 22px;
+		line-height: 25px;
+	  	color: #cfcfcf;
+	  	margin-top: 5px;
+	  	height: 28px;
+	}
+	
+	.hashtag h1 {
+		font-family: ErasDemi;
+		text-align: right;
+		font-size: 45px;
+	  	color: #cfcfcf;
+	  	margin-top: 5px;
+	}
+		
 	h2{
 	    margin: 0;     
 	    color: #666;
@@ -39,8 +75,7 @@
 	    font-size: 52px;
 	    font-family: "trebuchet ms", sans-serif;    
 	}
-	.item{
-	    background: #ffffff;    
+	.item{   
 	    text-align: center;
 	    height: 300px !important;
 	}
@@ -53,7 +88,7 @@
 	</style>
 
 </h:head>
-<h:body>
+<h:body style="margin: 0 0 0px">
 <div id="mask" align="center">
 	<div id="conteudo">
 		<div class="tela" style="width: 1024px; height: 768px;">
@@ -75,8 +110,8 @@
 				<div id="myCarousel" class="carousel slide" data-interval="5000" data-ride="carousel">
 					<h:form  id="galeriaForm">
 					
-						<div class="carousel-inner">
-	            			<h:outputText value="#{SlideshowInstagramBean.printCarossel(2)}" escape="false"/>
+						<div class="carousel-inner" style="width: 1024px; height: 636px; position: relative;">
+	            			<h:outputText value="#{SlideshowInstagramBean.printCarossel(12)}" escape="false"/>
 	        			</div>
 									
 						<h:commandButton id="resetForm" style="display: none;">

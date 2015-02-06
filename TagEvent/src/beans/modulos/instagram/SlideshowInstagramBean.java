@@ -87,10 +87,16 @@ public class SlideshowInstagramBean implements Serializable
 	{
 		StringBuffer print = new StringBuffer();
 		InstagramFoto foto = null;
+		int pgFotos = 1;
+
+		if(qtdFotos==2) { pgFotos = 2; }
+		if(qtdFotos==3) { pgFotos = 6; }
+		if(qtdFotos==6) { pgFotos = 12; }
+		
 		for (int i = 0; i < fotosInstagram.size(); i++) 
 		{
 			foto = fotosInstagram.get(i);
-			
+		
 			if(i==0) 
 			{ 
 				print.append(newItemGallery(true));
@@ -103,7 +109,18 @@ public class SlideshowInstagramBean implements Serializable
 				print.append(newItemGallery(false));
 				print.append(newRow());
 			}
-			
+//			else if(i/qtdFotos==1 && i%qtdFotos==0) 
+//			{
+//				print.append("<br/>");
+//			}
+//			else if(i%(qtdFotos*2)==0) 
+//			{
+//				print.append(close());
+//				print.append(close());
+//				print.append(newItemGallery(false));
+//				print.append(newRow());
+//			}
+		
 			print.append(newPhoto(foto, qtdFotos));
             
 			if(i==(fotosInstagram.size()-1))
@@ -115,28 +132,33 @@ public class SlideshowInstagramBean implements Serializable
 		
 		return print.toString();
 	}
-	
+
+//	public String newItemGallery(boolean valor)
+//	{ return "<div class='item gallery col-sm-12"+(valor ? " active" : "")+"'>"; }
 	public String newItemGallery(boolean valor)
-	{ return "<div class='item gallery"+(valor ? " active" : "")+"'>"; }
+	{ return "<div align='center' class='item gallery"+(valor ? " active" : "")+"'>"; }
 
 	public String newRow()
-	{ return "<div class='row'>"; }
-	
+	{ return "<div>"; }
+//	
+//	public String newPhoto(InstagramFoto foto, long qtdFoto)
+//	{ return "<div class='col-sm-"+(int)(12/qtdFoto)+" middle-box text-center'><img alt='image' class='img-responsive' src='"+foto.getUrlImagemGrande()+"'></div>"; }
+
 	public String newPhoto(InstagramFoto foto, long qtdFoto)
-	{ return "<div "+(sizePhoto(qtdFoto))+" class='col-sm-"+(int)(12/qtdFoto)+" middle-box text-center'><img alt='image' class='img-responsive' src='"+foto.getUrlImagemGrande()+"'></div>"; }
+	{ return "<img alt='image' "+sizePhoto(qtdFoto)+" class='img-responsive' src='"+foto.getUrlImagemGrande()+"'>"; }
 
 	public String close()
 	{ return "</div>"; }
 
 	public String sizePhoto(long qtdFoto)
 	{
-		if(qtdFoto==1) 	{ return "style='width: 636px; height: 636px;'"; }
-		if(qtdFoto==2) 	{ return "style='width: 512px; height: 512px;'"; }
-		if(qtdFoto==6) 	{ return "style='width: 318px; height: 318px;'"; }
-		if(qtdFoto==12) { return "style='width: 212px; height: 212px;'"; }
+		if(qtdFoto==1) 	{ return "style='width: 636px; height: 636px; float: left; margin-right: 194px; margin-left: 194px;'"; }
+		if(qtdFoto==2) 	{ return "style='width: 508px; height: 508px; float: left; margin-right: 2px; margin-left: 2px; margin-top: 64px; margin-bottom: 64px;'"; }
+		if(qtdFoto==6) 	{ return "style='width: 318px; height: 318px; float: left; margin-right: 11.66px; margin-left: 11.66px;'"; }
+		if(qtdFoto==12) { return "style='width: 212px; height: 212px; float: left; margin-right: 22px; margin-left: 22px;'"; }
 		return null;
 	}
-	
+
 	/*-*-* Getters and Setters *-*-*/
 	public List<InstagramFoto> getFotosInstagram() {
 		return fotosInstagram;
