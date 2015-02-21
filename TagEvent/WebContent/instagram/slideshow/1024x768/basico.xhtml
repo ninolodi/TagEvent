@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"  
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+<f:metadata>
+    <f:viewParam id="pEvento" name="e" value="#{SlideshowInstagramBean.pkEvento}" required="true"/>
+    <f:viewParam id="pLayout" name="l" value="#{SlideshowInstagramBean.layout}" required="false"/>
+    <f:viewParam id="pTempo" name="t" value="#{SlideshowInstagramBean.tempo}" required="false"/>
+    <f:event type="preRenderView" listener="#{SlideshowInstagramBean.atualizar()}" />
+</f:metadata>
+
+<h:head>
+	<title>#TagEvent - Slideshow</title>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	var cnt = 0;
+	$(document).ready(function()
+	{
+		$('body').css('overflow','hidden');
+		
+		$('#myCarousel').carousel();
+		cnt = $('#myCarousel .item').length;
+		$("#myCarousel").on("slide.bs.carousel", function() 
+		{
+			cnt--;
+			if (cnt == 0) 
+			{
+				$('#myCarousel').carousel();
+				cnt = $('#myCarousel .item').length;
+			}
+		});
+	});
+	
+	</script>
+	<style type="text/css">
+	
+	@font-face {
+	  font-family: ErasDemi;
+	  src: url(/TagEvent/template/fonts/ERASDEMI.TTF);
+	}
+		
+	#mask {
+	  position:absolute;
+	  left:0;
+	  top:0;
+	  width: 100%;
+	  height: 100%;
+	  background-color:#000;
+	}
+
+	#textoPerfilPublico p {
+		font-family: ErasDemi;
+		text-align: center;
+		font-size: 22px;
+		line-height: 25px;
+	  	color: #cfcfcf;
+	  	margin-top: 5px;
+	  	height: 28px;
+	}
+	
+	.hashtag h1 {
+		font-family: ErasDemi;
+		text-align: right;
+		font-size: 45px;
+	  	color: #cfcfcf;
+	  	margin-top: 5px;
+	}
+		
+	h2{
+	    margin: 0;     
+	    color: #666;
+	    padding-top: 90px;
+	    font-size: 52px;
+	    font-family: "trebuchet ms", sans-serif;    
+	}
+	.item{   
+	    text-align: center;
+	    height: 300px !important;
+	}
+	.carousel{
+	    margin-top: 20px;
+	}
+	.bs-example{
+		margin: 20px;
+	}
+	</style>
+
+</h:head>
+<h:body style="margin: 0 0 0px">
+<div id="mask" align="center">
+	<div id="conteudo">
+		<div class="tela" style="width: 1024px; height: 768px;">
+			
+			<div style="width: 1024px; height: 68px; position: relative;">
+				<div align="left" style="width: 155px; height: 68px; float: left;">
+					<img src="/TagEvent/template/img/logos/logoInstagram240.png" width="160" height="50" id="logo" class="topo"/>
+				</div>
+				<div align="right" style="width: 245px; height: 68px; float: left;">
+					<div id="textoPerfilPublico"><p style="margin: 0 0 0px">Publique fotos em seu perfil público com</p></div>
+				</div>
+				<div align="right" class="hashtag" style="width: 624px; height: 68px; float: right;">
+					<h1 style="margin: 0 0 0px"><font color="#7ac657">#Hashtag</font></h1>
+				</div>
+			</div>
+			
+			<div style="width: 1024px; height: 636px; position: relative;">
+				
+				<div id="myCarousel" class="carousel slide" data-interval="#{SlideshowInstagramBean.tempo}" data-ride="carousel">
+					<h:form  id="galeriaForm">
+					
+						<div class="carousel-inner" style="width: 1024px; height: 636px; position: relative;">
+	            			<h:outputText value="#{SlideshowInstagramBean.printCarossel()}" escape="false"/>
+	        			</div>
+									
+						<h:commandButton id="resetForm" style="display: none;">
+							<f:ajax event="action" render="@form" onevent="onReset"/>
+						</h:commandButton>
+					</h:form>
+				</div>
+				
+			</div>
+			
+			<div style="width: 1024px; height: 64px; position: relative;">
+				<div align="center" style="width: 1024px; height: 64px; float: left;">
+					<br/>
+					<img src="/TagEvent/template/img/logos/logoWebsiteBranco200.png" width="200" height="20" id="logoWebsite"/>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</h:body>
+</h:html>

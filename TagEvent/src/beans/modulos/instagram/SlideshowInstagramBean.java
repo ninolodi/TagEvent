@@ -13,7 +13,6 @@ import persistencia.om.Instagram;
 import persistencia.om.InstagramConfiguracao;
 import persistencia.om.InstagramFoto;
 import utils.BDConstantes;
-import utils.DoubleUtil;
 import utils.data.Data;
 import br.com.mresolucoes.atta.configuracoes.Configuracoes;
 import br.com.mresolucoes.atta.persistencia.conexao.servidores.PostgresJDBC;
@@ -28,7 +27,6 @@ public class SlideshowInstagramBean implements Serializable
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private long pkEvento = 10;
 	private List<InstagramFoto> fotosInstagram = new ArrayList<InstagramFoto>();
 	private List<Instagram> instagrams = new ArrayList<Instagram>();
 	private BaseJDBC baseJDBC = new PostgresJDBC(Configuracoes.propriedades.get("baseUrl"), Configuracoes.propriedades.get("baseBase"), Configuracoes.propriedades.getInt("basePorta"), Configuracoes.propriedades.get("baseLogin"), Configuracoes.propriedades.get("baseSenha"), null);
@@ -36,10 +34,29 @@ public class SlideshowInstagramBean implements Serializable
 	private InstagramConfiguracao configuracao = null;
 	private int tempoAtualizacaoSegundos = 15;
 	
+	private Long pkEvento = null;
+	private long layout = 1;
+	private long tempo = 5000;
+	
 	public SlideshowInstagramBean() 
 	{
 		try
 		{
+			
+		}
+		catch (Exception e)
+		{
+			Logs.addError("SlideshowInstagramBean - Construtor", e);
+//			redirecionarErro(e);
+		}
+	}
+	
+	public void atualizar() 
+	{
+		try
+		{
+			if(pkEvento==null) { throw new Exception("É necessário indicar o evento"); }
+			
 			configuracao = instagramDAO.getInstagramConfiguracaoEvento(baseJDBC, pkEvento, BDConstantesAtta.STATUS_ATIVO, 0);
 			
 			fotosInstagram.clear();
@@ -49,7 +66,7 @@ public class SlideshowInstagramBean implements Serializable
 		}
 		catch (Exception e)
 		{
-			Logs.addError("GaleriaInstagramBean - Construtor", e);
+			Logs.addError("SlideshowInstagramBean - atualizar", e);
 //			redirecionarErro(e);
 		}
 	}
@@ -83,15 +100,10 @@ public class SlideshowInstagramBean implements Serializable
 		}		
 	}
 
-	public String printCarossel(long qtdFotos)
+	public String printCarossel()
 	{
 		StringBuffer print = new StringBuffer();
 		InstagramFoto foto = null;
-		int pgFotos = 1;
-
-		if(qtdFotos==2) { pgFotos = 2; }
-		if(qtdFotos==3) { pgFotos = 6; }
-		if(qtdFotos==6) { pgFotos = 12; }
 		
 		for (int i = 0; i < fotosInstagram.size(); i++) 
 		{
@@ -102,7 +114,7 @@ public class SlideshowInstagramBean implements Serializable
 				print.append(newItemGallery(true));
 				print.append(newRow());
 			}
-			else if(i%qtdFotos==0) 
+			else if(i%layout==0) 
 			{
 				print.append(close());
 				print.append(close());
@@ -121,7 +133,7 @@ public class SlideshowInstagramBean implements Serializable
 //				print.append(newRow());
 //			}
 		
-			print.append(newPhoto(foto, qtdFotos));
+			print.append(newPhoto(foto, layout));
             
 			if(i==(fotosInstagram.size()-1))
 			{
@@ -149,16 +161,17 @@ public class SlideshowInstagramBean implements Serializable
 
 	public String close()
 	{ return "</div>"; }
-
+	
 	public String sizePhoto(long qtdFoto)
 	{
 		if(qtdFoto==1) 	{ return "style='width: 636px; height: 636px; float: left; margin-right: 194px; margin-left: 194px;'"; }
 		if(qtdFoto==2) 	{ return "style='width: 508px; height: 508px; float: left; margin-right: 2px; margin-left: 2px; margin-top: 64px; margin-bottom: 64px;'"; }
+		if(qtdFoto==4) 	{ return "style='width: 318px; height: 318px; float: left; margin-right: 97px; margin-left: 97px;'"; }
 		if(qtdFoto==6) 	{ return "style='width: 318px; height: 318px; float: left; margin-right: 11.66px; margin-left: 11.66px;'"; }
 		if(qtdFoto==12) { return "style='width: 212px; height: 212px; float: left; margin-right: 22px; margin-left: 22px;'"; }
-		return null;
+		return "style='width: 636px; height: 636px; float: left; margin-right: 194px; margin-left: 194px;'";
 	}
-
+	
 	/*-*-* Getters and Setters *-*-*/
 	public List<InstagramFoto> getFotosInstagram() {
 		return fotosInstagram;
@@ -174,6 +187,30 @@ public class SlideshowInstagramBean implements Serializable
 
 	public void setInstagrams(List<Instagram> instagrams) {
 		this.instagrams = instagrams;
+	}
+
+	public long getLayout() {
+		return layout;
+	}
+
+	public void setLayout(long layout) {
+		this.layout = layout;
+	}
+
+	public long getTempo() {
+		return tempo;
+	}
+
+	public void setTempo(long tempo) {
+		this.tempo = tempo;
+	}
+
+	public Long getPkEvento() {
+		return pkEvento;
+	}
+
+	public void setPkEvento(Long pkEvento) {
+		this.pkEvento = pkEvento;
 	}
 	
 

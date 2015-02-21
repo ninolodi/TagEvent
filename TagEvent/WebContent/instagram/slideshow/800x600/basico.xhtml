@@ -7,6 +7,13 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 >
+<f:metadata>
+    <f:viewParam id="pEvento" name="e" value="#{SlideshowInstagramBean.pkEvento}" required="true"/>
+    <f:viewParam id="pLayout" name="l" value="#{SlideshowInstagramBean.layout}" required="false"/>
+    <f:viewParam id="pTempo" name="t" value="#{SlideshowInstagramBean.tempo}" required="false"/>
+    <f:event type="preRenderView" listener="#{SlideshowInstagramBean.atualizar()}" />
+</f:metadata>
+
 <h:head>
 	<title>#TagEvent - Slideshow</title>
 	
@@ -91,9 +98,9 @@
 <h:body style="margin: 0 0 0px">
 <div id="mask" align="center">
 	<div id="conteudo">
-		<div class="tela" style="width: 1024px; height: 768px;">
+		<div class="tela" style="width: 800px; height: 600px;">
 			
-			<div style="width: 1024px; height: 68px; position: relative;">
+			<div style="width: 800px; height: 68px; position: relative;">
 				<div align="left" style="width: 155px; height: 68px; float: left;">
 					<img src="/TagEvent/template/img/logos/logoInstagram240.png" width="160" height="50" id="logo" class="topo"/>
 				</div>
@@ -105,13 +112,13 @@
 				</div>
 			</div>
 			
-			<div style="width: 1024px; height: 636px; position: relative;">
+			<div style="width: 800px; height: 636px; position: relative;">
 				
-				<div id="myCarousel" class="carousel slide" data-interval="5000" data-ride="carousel">
+				<div id="myCarousel" class="carousel slide" data-interval="#{SlideshowInstagramBean.tempo}" data-ride="carousel">
 					<h:form  id="galeriaForm">
 					
-						<div class="carousel-inner" style="width: 1024px; height: 636px; position: relative;">
-	            			<h:outputText value="#{SlideshowInstagramBean.printCarossel(12)}" escape="false"/>
+						<div class="carousel-inner" style="width: 800px; height: 636px; position: relative;">
+	            			<h:outputText value="#{SlideshowInstagramBean.printCarossel()}" escape="false"/>
 	        			</div>
 									
 						<h:commandButton id="resetForm" style="display: none;">
@@ -122,8 +129,8 @@
 				
 			</div>
 			
-			<div style="width: 1024px; height: 64px; position: relative;">
-				<div align="center" style="width: 1024px; height: 64px; float: left;">
+			<div style="width: 800px; height: 64px; position: relative;">
+				<div align="center" style="width: 800px; height: 64px; float: left;">
 					<br/>
 					<img src="/TagEvent/template/img/logos/logoWebsiteBranco200.png" width="200" height="20" id="logoWebsite"/>
 				</div>
