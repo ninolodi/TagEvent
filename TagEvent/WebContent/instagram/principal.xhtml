@@ -10,71 +10,94 @@
 <f:metadata>
     <f:event type="preRenderView" listener="#{PrincipalInstagramBean.atualizar()}"/>
 </f:metadata>
-<ui:composition template="/template/template.xhtml">
+<ui:composition template="/template2/template.xhtml">
 	<ui:define name="definicoesPre">
-		<link href="/TagEvent/template/css/components/charts/morris.css" rel="stylesheet" type="text/css"/>
+		<link href="/TagEvent/template2/css/components/charts/morris.css" rel="stylesheet" type="text/css"/>
 	</ui:define>
+	
+	    <ui:define name="header">
+    	<div class="col-sm-4">
+		    <h2><i class="fa-fw fa fa-instagram"></i> <span>Dashboard</span></h2>
+		    <ol class="breadcrumb">
+                <li>
+                    <a href="#">Instagram</a>
+                </li>
+                <li class="active">
+                    <strong>Dashboard</strong>
+                </li>
+            </ol>
+		</div>
+		<div class="col-sm-8">
+			    <div class="title-action">
+					<h:outputLink class="btn btn-primary hidden">
+					    <i class="glyphicon glyphicon-ok"></i> Reload
+					    <f:ajax event="click" listener="#{SlideshowInstagramBean.salvar()}" render=":formPrincipal" onevent="onCompleteDoLayout"/>
+					</h:outputLink>
+				</div>
+	    </div>
+    </ui:define>
 	
     <ui:define name="content">
 
-		<!-- RIBBON -->
-		<div id="ribbon">
-
-			<div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-				<h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-instagram"></i> Instagram <span>> Principal</span></h1>
-			</div>
-			
-			<div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
-				<a class="btn btn-labeled btn-info" href="/TagEvent/instagram/principal.xhtml">
-					<span class="btn-label"> <i class="fa fa-bar-chart-o"></i></span>Principal
-				</a>
-				<a class="btn btn-labeled btn-default" href="/TagEvent/instagram/galeria.xhtml">
-					<span class="btn-label"> <i class="fa fa-camera"></i></span>Galeria
-				</a>
-				<a class="btn btn-labeled btn-default" href="/TagEvent/instagram/monitor.xhtml">
-					<span class="btn-label"> <i class="fa fa-shield"></i></span>Monitor
-				</a>
-				<a class="btn btn-labeled btn-default" href="/TagEvent/instagram/slideshow/slideshow.xhtml" target="_blank">
-					<span class="btn-label"> <i class="fa fa-desktop"></i></span>Slideshow
-				</a>
-				<a class="btn btn-labeled btn-default" href="/TagEvent/instagram/configurar.xhtml">
-					<span class="btn-label"> <i class="fa fa-cogs"></i></span>Configurar
-				</a>
-			</div>
-
-		</div>
-		<!-- END RIBBON -->
-
 		<!-- MAIN CONTENT -->
 		<div id="content">
-			
-			<hr class="line"/>
-
-			<div class="row placeholders">
-				<div class="col-xs-6 col-sm-3 placeholder center resume">
-					<i class="fa fa-lg fa-instagram fa-5x fa-fw colorBlue"></i>
-					<h4>#{PrincipalInstagramBean.getNrTotalMidias()}</h4>
-					<p class="text-muted">Total de Posts</p>
-				</div>
-				<div class="col-xs-6 col-sm-3 placeholder center resume">
-					<i class="fa fa-camera fa-5x fa-fw colorBlue"></i>
-					<h4>#{PrincipalInstagramBean.getNrTotalFotos()}</h4>
-					<p>Total de Fotos</p>
-				</div>
-				<div class="col-xs-6 col-sm-3 placeholder center resume">
-					<i class="fa fa-video-camera fa-5x fa-fw colorBlue"></i>
-					<h4>#{PrincipalInstagramBean.getNrTotalVideos()}</h4>
-					<p>Total de Vídeos</p>
-				</div>
-				<div class="col-xs-6 col-sm-3 placeholder center resume">
-					<i class="fa fa-group fa-5x fa-fw colorBlue"></i>
-					<h4 class="center">#{PrincipalInstagramBean.getNrTotalUsers()}</h4>
-					<p>Usuários Únicos</p>
-				</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+	                <div class="widget style1">
+	                        <div class="row">
+	                            <div class="col-xs-4 text-center">
+	                                <i class="fa fa-instagram fa-5x"></i>
+	                            </div>
+	                            <div class="col-xs-8 text-right">
+	                                <span> Total de Posts </span>
+	                                <h2 class="font-bold">#{PrincipalInstagramBean.getNrTotalMidias()}</h2>
+	                            </div>
+	                        </div>
+	                </div>
+	            </div>
+	            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+	                <div class="widget style1">
+	                        <div class="row">
+	                            <div class="col-xs-4 text-center">
+	                                <i class="fa fa-camera fa-5x"></i>
+	                            </div>
+	                            <div class="col-xs-8 text-right">
+	                                <span> Total de Fotos </span>
+	                                <h2 class="font-bold">#{PrincipalInstagramBean.getNrTotalFotos()}</h2>
+	                            </div>
+	                        </div>
+	                </div>
+	            </div>
+	            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+	                <div class="widget style1">
+	                        <div class="row">
+	                            <div class="col-xs-4 text-center">
+	                                <i class="fa fa-video-camera fa-5x"></i>
+	                            </div>
+	                            <div class="col-xs-8 text-right">
+	                                <span> Total de Vídeos </span>
+	                                <h2 class="font-bold">#{PrincipalInstagramBean.getNrTotalVideos()}</h2>
+	                            </div>
+	                        </div>
+	                </div>
+	            </div>
+	            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+	                <div class="widget style1">
+	                        <div class="row">
+	                            <div class="col-xs-4 text-center">
+	                                <i class="fa fa-group fa-5x"></i>
+	                            </div>
+	                            <div class="col-xs-8 text-right">
+	                                <span> Usuários Únicos </span>
+	                                <h2 class="font-bold">#{PrincipalInstagramBean.getNrTotalUsers()}</h2>
+	                            </div>
+	                        </div>
+	                </div>
+	            </div>
 			</div>
-
-			<br/>
-
+									
+			<hr class="line"/>
+			
 			<div class="row">
 
 				<!-- NEW WIDGET START -->
@@ -324,12 +347,12 @@
 		<script src="http://cdn.oesmith.co.uk/morris-0.4.1.min.js"></script>
 		
 		
-		<script src="/TagEvent/template/js/plugin/flot/jquery.flot.cust.js"></script>
-		<script src="/TagEvent/template/js/plugin/flot/jquery.flot.resize.js"></script>
-		<script src="/TagEvent/template/js/plugin/flot/jquery.flot.fillbetween.min.js"></script>
-		<script src="/TagEvent/template/js/plugin/flot/jquery.flot.orderBar.js"></script>
-		<script src="/TagEvent/template/js/plugin/flot/jquery.flot.pie.js"></script>
-		<script src="/TagEvent/template/js/plugin/flot/jquery.flot.tooltip.js"></script>
+		<script src="/TagEvent/template2/js/plugin/flot/jquery.flot.cust.js"></script>
+		<script src="/TagEvent/template2/js/plugin/flot/jquery.flot.resize.js"></script>
+		<script src="/TagEvent/template2/js/plugin/flot/jquery.flot.fillbetween.min.js"></script>
+		<script src="/TagEvent/template2/js/plugin/flot/jquery.flot.orderBar.js"></script>
+		<script src="/TagEvent/template2/js/plugin/flot/jquery.flot.pie.js"></script>
+		<script src="/TagEvent/template2/js/plugin/flot/jquery.flot.tooltip.js"></script>
 		
 		<script>
 

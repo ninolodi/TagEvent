@@ -151,7 +151,7 @@ public class InstagramDAO extends BaseDAOAtta
 		query.add(" INNER JOIN Instagram AS i ON (f.fkInstagram = i.pkInstagram)");
 		query.add(" WHERE f.pkInstagramFoto > 0");
 		query.add(" AND f.status IN (?)", status);
-		query.add(" AND i.hashtag = ?", hashtag);
+		query.add(" AND upper(i.hashtag) = ?", hashtag.toUpperCase());
 		query.add(" AND i.status = ?", BDConstantesAtta.STATUS_ATIVO);
 		query.add(" ORDER BY f.habilitado DESC");
 		if(limit!=null && limit > 0) { query.add(" LIMIT ?", limit); }

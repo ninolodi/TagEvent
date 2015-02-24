@@ -9,11 +9,14 @@ import javax.faces.bean.ViewScoped;
 
 import logs.Logs;
 import persistencia.dao.InstagramDAO;
+import persistencia.om.Evento;
 import persistencia.om.Instagram;
 import persistencia.om.InstagramConfiguracao;
 import persistencia.om.InstagramFoto;
 import utils.BDConstantes;
+import utils.SConstantes;
 import utils.data.Data;
+import beans.aplicacao.Contexto;
 import br.com.mresolucoes.atta.configuracoes.Configuracoes;
 import br.com.mresolucoes.atta.persistencia.conexao.servidores.PostgresJDBC;
 import br.com.mresolucoes.atta.persistencia.conexao.servidores.base.BaseJDBC;
@@ -34,7 +37,7 @@ public class SlideshowInstagramBean implements Serializable
 	private InstagramConfiguracao configuracao = null;
 	private int tempoAtualizacaoSegundos = 15;
 	
-	private Long pkEvento = null;
+	private long pkEvento = 0;
 	private long layout = 1;
 	private long tempo = 5000;
 	
@@ -55,8 +58,6 @@ public class SlideshowInstagramBean implements Serializable
 	{
 		try
 		{
-			if(pkEvento==null) { throw new Exception("É necessário indicar o evento"); }
-			
 			configuracao = instagramDAO.getInstagramConfiguracaoEvento(baseJDBC, pkEvento, BDConstantesAtta.STATUS_ATIVO, 0);
 			
 			fotosInstagram.clear();
@@ -170,6 +171,11 @@ public class SlideshowInstagramBean implements Serializable
 		if(qtdFoto==6) 	{ return "style='width: 318px; height: 318px; float: left; margin-right: 11.66px; margin-left: 11.66px;'"; }
 		if(qtdFoto==12) { return "style='width: 212px; height: 212px; float: left; margin-right: 22px; margin-left: 22px;'"; }
 		return "style='width: 636px; height: 636px; float: left; margin-right: 194px; margin-left: 194px;'";
+	}
+	
+	public Evento getEvento()
+	{
+		return (Evento)new Contexto().getSessionObject(SConstantes.EVENTO_SELECIONADO);
 	}
 	
 	/*-*-* Getters and Setters *-*-*/

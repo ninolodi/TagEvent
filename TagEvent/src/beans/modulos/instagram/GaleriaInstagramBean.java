@@ -44,8 +44,6 @@ public class GaleriaInstagramBean implements Serializable
 			offset = 0;
 			limit = 20;
 			fotosInstagram.clear();
-			
-			atualizar();
 		}
 		catch (Exception e)
 		{
@@ -57,23 +55,6 @@ public class GaleriaInstagramBean implements Serializable
 	{
 		try
 		{
-//			hashtag = null;	
-//			pkEvento = null;
-//			eventoSelecionado = null;
-//			
-//			offset = 0;
-//			limit = 20;
-//			fotosInstagram.clear();
-//			
-//			if(hashtag==null && pkEvento==null)
-//			{
-//				eventoSelecionado = (Evento)new Contexto().getSessionObject(SConstantes.EVENTO_SELECIONADO);
-//				if(eventoSelecionado!=null)
-//				{
-//					pkEvento = eventoSelecionado.getPkEvento();
-//				}
-//				System.out.println("atualizar ::: " + LogsUtil.classeToString(eventoSelecionado));
-//			}
 			getMorePhotos();
 		}
 		catch (Exception e)

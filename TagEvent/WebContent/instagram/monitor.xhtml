@@ -7,6 +7,12 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 >
+<f:metadata>
+    <f:viewParam id="pHashtag" name="h" value="#{MonitorInstagramBean.hashtag}" required="false"/>
+    <f:viewParam id="pPkEvento" name="e" value="#{MonitorInstagramBean.pkEvento}" required="false"/>
+    <f:event type="preRenderView" listener="#{MonitorInstagramBean.atualizar()}" />
+</f:metadata>
+
 <ui:composition template="/template2/template.xhtml">
 	<ui:define name="definicoesPre">
 		<link rel="stylesheet" type="text/css" href="/TagEvent/template/css/components/galeria/demo.css" />

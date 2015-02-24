@@ -118,37 +118,30 @@
 	        <div class="navbar-header">
 	            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
 	        </div>
+	        <h:form>
 	            <ul class="nav navbar-top-links navbar-right">
 	                <li>
 	                    <span class="m-r-sm text-muted welcome-message">Selecione o evento:</span>
 	                </li>
 	                <li class="dropdown">
 	                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-	                       <i class="fa fa-tags"></i> The Voice Brasil
+	                       <i class="fa fa-tags"></i> #{DashboardBean.eventoSelecionado.nome}
 	                    </a>
 	                    <ul class="dropdown-menu dropdown-alerts">
-	                        <li>
-	                            <a href="mailbox.html">
-	                                <div>
-	                                    <i class="fa fa-tag fa-fw"></i> 
-	                                    <strong>Conexão Locamérica</strong>
-		                                <br/>
-		                                <small class="text-muted">3 dias atrás às 20:00 - 29/12/2014</small>
-	                                </div>
-	                            </a>
-	                        </li>
-	                        <li class="divider"></li>
-	                        <li>
-	                            <a href="mailbox.html">
-	                                <div>
-	                                    <i class="fa fa-tag fa-fw"></i> 
-	                                    <strong>Vôlei Amil</strong>
-	                                    <br/>
-	                                    <small class="text-muted">35 dias atrás às 19:30 - 15/11/2014</small>
-	                                </div>
-	                            </a>
-	                        </li>
-	                        <li class="divider"></li>
+	                    	<ui:repeat value="#{DashboardBean.eventos}" var="evento" varStatus="status">					
+								<li>
+									<h:commandLink action="#{DashboardBean.selecionarEvento(evento.pkEvento)}">
+										<div>
+											<i class="fa fa-tag fa-fw"></i>
+											<strong><h:outputText value="#{evento.nome}" /></strong>
+											<br/>
+			                                <small class="text-muted">3 dias atrás às 20:00 - 29/12/2014</small>
+		                                </div>
+									</h:commandLink>
+								</li>
+								
+	                        	<li class="divider"></li>
+							</ui:repeat>
 	                        <li>
                             <div class="text-center link-block">
                                 <a href="mailbox.html">
@@ -164,7 +157,7 @@
 	                    </a>
 	                </li>
 	            </ul>
-	
+			</h:form>
 	        </nav>
 	        </div>
 	        
@@ -201,7 +194,6 @@
 		   	
 		</ui:insert>
 		
-
 	    <!-- Mainly scripts -->
 	    <script src="/TagEvent/template2/js/jquery-2.1.1.js"></script>
 	    <script src="/TagEvent/template2/js/bootstrap.min.js"></script>
