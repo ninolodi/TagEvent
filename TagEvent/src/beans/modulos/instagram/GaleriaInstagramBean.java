@@ -6,12 +6,14 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import logs.Logs;
 import persistencia.dao.InstagramDAO;
 import persistencia.om.Evento;
 import persistencia.om.InstagramFoto;
 import utils.BDConstantes;
+import utils.LongUtil;
 import utils.SConstantes;
 import beans.aplicacao.Contexto;
 import br.com.mresolucoes.atta.configuracoes.Configuracoes;
@@ -43,7 +45,7 @@ public class GaleriaInstagramBean implements Serializable
 		{
 			offset = 0;
 			limit = 20;
-			fotosInstagram.clear();
+			fotosInstagram.clear();	
 		}
 		catch (Exception e)
 		{
@@ -55,6 +57,38 @@ public class GaleriaInstagramBean implements Serializable
 	{
 		try
 		{
+			if(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("h")!=null && (hashtag == null || hashtag.equals((String)FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("h")) == false))
+			{
+				hashtag = (String)FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("h");
+				pkEvento = null;
+				
+				offset = 0;
+				limit = 20;
+				fotosInstagram.clear();
+			}
+			else if(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("e") != null && (pkEvento == null || pkEvento != LongUtil.toLong(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("e"))))
+			{
+				pkEvento = LongUtil.toLong(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("e"));
+				hashtag = null;
+				
+				offset = 0;
+				limit = 20;
+				fotosInstagram.clear();
+			}
+			else if(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("h")==null && FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("e") == null)
+			{
+				Evento eventoSessao = (Evento)new Contexto().getSessionObject(SConstantes.EVENTO_SELECIONADO);
+				if(eventoSessao!=null && (pkEvento == null || pkEvento != eventoSessao.getPkEvento()))
+				{
+					pkEvento = eventoSessao.getPkEvento();
+					hashtag = null;
+					
+					offset = 0;
+					limit = 20;
+					fotosInstagram.clear();
+				}
+			}
+			
 			getMorePhotos();
 		}
 		catch (Exception e)

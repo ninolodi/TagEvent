@@ -10,9 +10,10 @@
 <f:metadata>
     <f:event type="preRenderView" listener="#{PrincipalInstagramBean.atualizar()}"/>
 </f:metadata>
+
 <ui:composition template="/template2/template.xhtml">
 	<ui:define name="definicoesPre">
-		<link href="/TagEvent/template2/css/components/charts/morris.css" rel="stylesheet" type="text/css"/>
+		<link href="/TagEvent/template/css/components/charts/morris.css" rel="stylesheet" type="text/css"/>
 	</ui:define>
 	
 	    <ui:define name="header">
@@ -98,247 +99,136 @@
 									
 			<hr class="line"/>
 			
+			<!-- NEW ROW START -->
 			<div class="row">
-
 				<!-- NEW WIDGET START -->
-				<article class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-
-					<div class="jarviswidget" id="wid-id-7" data-widget-editbutton="false">
-						
-						<header>
-							<span class="widget-icon"> <i class="fa fa-tags"></i> </span>
-							<h2>Contador Distribuição dos Post</h2>
-
-						</header>
-
-						<!-- widget div-->
-						<div>
-
-							<!-- widget edit box -->
-							<div class="jarviswidget-editbox">
-								<!-- This area used as dropdown edit box -->
-
-							</div>
-							<!-- end widget edit box -->
-
-							<!-- widget content -->
-							<div class="widget-body no-padding">
-
-								<table class="table table-bordered table-striped table-condensed table-hover smart-form has-tickbox">
-									<thead>
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+					<div class="ibox float-e-margins">
+		                <div class="ibox-title">
+							<h5>Contador Distribuição dos Post</h5>
+							<div class="ibox-tools">
+		                        
+		                    </div>
+		                </div>
+		                <div class="ibox-content">
+			               <table class="table table-bordered table-striped table-condensed table-hover smart-form has-tickbox">
+								<thead>
+									<tr>
+										<th>Ranking</th>
+										<th>#Hashtag</th>
+										<th>Quantidade</th>
+										<th>Galeria</th>
+									</tr>
+								</thead>
+								<tbody>
+									<ui:repeat value="#{PrincipalInstagramBean.topHashtagsPost}" var="him" varStatus="status">
 										<tr>
-											<th>Ranking</th>
-											<th>#Hashtag</th>
-											<th>Quantidade</th>
-											<th>Galeria</th>
+											<td style="text-align: center;"><strong>#{him.ranking}</strong></td>
+											<td style="text-align: left;">##{him.hashtag}</td>
+											<td style="text-align: right;"><strong>#{him.nrPost}</strong></td>
+											<td style="text-align: center;"><a href="/TagEvent/instagram/galeria.xhtml?h=#{him.hashtag}"><i class="fa fa-camera"></i></a></td>
 										</tr>
-									</thead>
-									<tbody>
-										<ui:repeat value="#{PrincipalInstagramBean.topHashtagsPost}" var="him" varStatus="status">
-											<tr>
-												<td style="text-align: center;"><strong>#{him.ranking}</strong></td>
-												<td style="text-align: left;">##{him.hashtag}</td>
-												<td style="text-align: right;"><strong>#{him.nrPost}</strong></td>
-												<td style="text-align: center;"><a href="/TagEvent/instagram/galeria.xhtml?h=#{him.hashtag}"><i class="fa fa-camera"></i></a></td>
-											</tr>
-										</ui:repeat>
-									</tbody>
-								</table>
-
-							</div>
-							<!-- end widget content -->
-
-						</div>
-						<!-- end widget div -->
-
+									</ui:repeat>
+								</tbody>
+							</table>
+			            </div>
 					</div>
-					<!-- end widget -->
-
-				</article>
+				</div>
 				<!-- WIDGET END -->
 				
 				<!-- NEW WIDGET START -->
-				<article class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-
-					<div class="jarviswidget" id="wid-id-7" data-widget-editbutton="false">
-						
-						<header>
-							<span class="widget-icon"> <i class="fa fa-group"></i> </span>
-							<h2>Top Usuários</h2>
-
-						</header>
-
-						<!-- widget div-->
-						<div>
-
-							<!-- widget edit box -->
-							<div class="jarviswidget-editbox">
-								<!-- This area used as dropdown edit box -->
-
-							</div>
-							<!-- end widget edit box -->
-
-							<!-- widget content -->
-							<div class="widget-body no-padding">
-
-								<table class="table table-bordered table-striped table-condensed table-hover smart-form has-tickbox">
-										<thead>
-											<tr>
-												<th>Ranking</th>
-												<th>Usuário</th>
-												<th>Nome</th>
-												<th>Quantidade</th>
-											</tr>
-										</thead>
-										<tbody>
-											<ui:repeat value="#{PrincipalInstagramBean.topUsersPost}" var="him" varStatus="status">
-												<tr>
-													<td style="text-align: center;"><strong>#{him.ranking}</strong></td>
-													<td style="text-align: center;"><a href="#{him.urlImagem}" target="_blank"><img src="#{him.urlImagem}" alt="" width="25"/></a></td>
-													<td style="text-align: left;">#{him.nome}</td>
-													<td style="text-align: right;"><strong>#{him.nrPost}</strong></td>
-												</tr>
-											</ui:repeat>
-										</tbody>
-									</table>
-
-							</div>
-							<!-- end widget content -->
-
-						</div>
-						<!-- end widget div -->
-
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+					<div class="ibox float-e-margins">
+		                <div class="ibox-title">
+							<h5>Top Usuários</h5>
+							<div class="ibox-tools">
+		                        
+		                    </div>
+		                </div>
+		                <div class="ibox-content">
+			               <table class="table table-bordered table-striped table-condensed table-hover smart-form has-tickbox">
+								<thead>
+									<tr>
+										<th>Ranking</th>
+										<th>Usuário</th>
+										<th>Nome</th>
+										<th>Quantidade</th>
+									</tr>
+								</thead>
+								<tbody>
+									<ui:repeat value="#{PrincipalInstagramBean.topUsersPost}" var="him" varStatus="status">
+										<tr>
+											<td style="text-align: center;"><strong>#{him.ranking}</strong></td>
+											<td style="text-align: center;"><a href="#{him.urlImagem}" target="_blank"><img src="#{him.urlImagem}" alt="" width="25"/></a></td>
+											<td style="text-align: left;">#{him.nome}</td>
+											<td style="text-align: right;"><strong>#{him.nrPost}</strong></td>
+										</tr>
+									</ui:repeat>
+								</tbody>
+							</table>
+			            </div>
 					</div>
-					<!-- end widget -->
-
-				</article>
+				</div>
 				<!-- WIDGET END -->
-
 			</div>
-
-			<!-- end row -->
+			<!-- ROW END -->
+			
+			<!-- NEW ROW START -->
 			<div class="row">
-				<article class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-
-					<div class="jarviswidget" id="wid-id-7" data-widget-editbutton="false">
-						
-						<header>
-							<span class="widget-icon"> <i class="fa fa-tasks"></i> </span>
-							<h2>Porcentagem Distribuição dos Post</h2>
-
-						</header>
-
-						<!-- widget div-->
-						<div>
-
-							<!-- widget edit box -->
-							<div class="jarviswidget-editbox">
-								<!-- This area used as dropdown edit box -->
-
-							</div>
-							<!-- end widget edit box -->
-
-							<!-- widget content -->
-							<div class="widget-body no-padding">
-
-								<div id="graficoDistribuicaoMidia" class="chart no-padding"></div>								
-
-							</div>
-							<!-- end widget content -->
-
-						</div>
-						<!-- end widget div -->
-
+				<!-- NEW WIDGET START -->
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+					<div class="ibox float-e-margins">
+		                <div class="ibox-title">
+							<h5>Porcentagem - Distribuição dos Post</h5>
+							<div class="ibox-tools">
+		                        
+		                    </div>
+		                </div>
+		                <div class="ibox-content">
+							<div id="graficoDistribuicaoMidia" class="chart no-padding"></div>
+			            </div>
 					</div>
-					<!-- end widget -->
-
-				</article>
+				</div>
 				<!-- WIDGET END -->
 				
-				<article class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-
-					<div class="jarviswidget" id="wid-id-7" data-widget-editbutton="false">
-						
-						<header>
-							<span class="widget-icon"> <i class="fa fa-tasks"></i> </span>
-							<h2>Porcentagem - Saúde da Marca</h2>
-
-						</header>
-
-						<!-- widget div-->
-						<div>
-
-							<!-- widget edit box -->
-							<div class="jarviswidget-editbox">
-								<!-- This area used as dropdown edit box -->
-
-							</div>
-							<!-- end widget edit box -->
-
-							<!-- widget content -->
-							<div class="widget-body no-padding">
-
-								<div id="graficoSaudeMarca" class="chart no-padding"></div>								
-
-							</div>
-							<!-- end widget content -->
-
-						</div>
-						<!-- end widget div -->
-
-					</div>
-					<!-- end widget -->
-
-				</article>
-			</div>
-			
-			<div class="row">
-
 				<!-- NEW WIDGET START -->
-				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
-					<div class="jarviswidget" id="wid-id-7" data-widget-editbutton="false">
-						
-						<header>
-							<span class="widget-icon"> <i class="fa fa-bar-chart-o"></i> </span>
-							<h2>Histograma</h2>
-
-						</header>
-
-						<!-- widget div-->
-						<div>
-
-							<!-- widget edit box -->
-							<div class="jarviswidget-editbox">
-								<!-- This area used as dropdown edit box -->
-
-							</div>
-							<!-- end widget edit box -->
-
-							<!-- widget content -->
-							<div class="widget-body no-padding">
-
-								<div id="bar-chart" class="chart"></div>								
-
-							</div>
-							<!-- end widget content -->
-
-						</div>
-						<!-- end widget div -->
-
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+					<div class="ibox float-e-margins">
+		                <div class="ibox-title">
+							<h5>Porcentagem - Saúde da Marca</h5>
+							<div class="ibox-tools">
+		                        
+		                    </div>
+		                </div>
+		                <div class="ibox-content">
+							<div id="graficoSaudeMarca" class="chart no-padding"></div>
+			            </div>
 					</div>
-					<!-- end widget -->
-
-				</article>
+				</div>
 				<!-- WIDGET END -->
-
 			</div>
-
-			<!-- end row -->
-
+			<!-- ROW END -->
 			
+			<!-- NEW ROW START -->
+			<div class="row">
+				<!-- NEW WIDGET START -->
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="ibox float-e-margins">
+		                <div class="ibox-title">
+							<h5>Histograma</h5>
+							<div class="ibox-tools">
+		                        
+		                    </div>
+		                </div>
+		                <div class="ibox-content">
+							<div id="bar-chart" class="chart"></div>
+			            </div>
+					</div>
+				</div>
+				<!-- WIDGET END -->
+			</div>
+			<!-- ROW END -->			
 		</div>
-
 	</ui:define>
 	
 	<ui:define name="definicoesPos">
@@ -347,12 +237,12 @@
 		<script src="http://cdn.oesmith.co.uk/morris-0.4.1.min.js"></script>
 		
 		
-		<script src="/TagEvent/template2/js/plugin/flot/jquery.flot.cust.js"></script>
-		<script src="/TagEvent/template2/js/plugin/flot/jquery.flot.resize.js"></script>
-		<script src="/TagEvent/template2/js/plugin/flot/jquery.flot.fillbetween.min.js"></script>
-		<script src="/TagEvent/template2/js/plugin/flot/jquery.flot.orderBar.js"></script>
-		<script src="/TagEvent/template2/js/plugin/flot/jquery.flot.pie.js"></script>
-		<script src="/TagEvent/template2/js/plugin/flot/jquery.flot.tooltip.js"></script>
+		<script src="/TagEvent/template/js/plugin/flot/jquery.flot.cust.js"></script>
+		<script src="/TagEvent/template/js/plugin/flot/jquery.flot.resize.js"></script>
+		<script src="/TagEvent/template/js/plugin/flot/jquery.flot.fillbetween.min.js"></script>
+		<script src="/TagEvent/template/js/plugin/flot/jquery.flot.orderBar.js"></script>
+		<script src="/TagEvent/template/js/plugin/flot/jquery.flot.pie.js"></script>
+		<script src="/TagEvent/template/js/plugin/flot/jquery.flot.tooltip.js"></script>
 		
 		<script>
 

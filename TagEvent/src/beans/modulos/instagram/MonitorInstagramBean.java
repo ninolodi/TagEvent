@@ -6,11 +6,13 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import logs.Logs;
 import persistencia.dao.InstagramDAO;
 import persistencia.om.Evento;
 import persistencia.om.InstagramFoto;
+import utils.LongUtil;
 import utils.SConstantes;
 import beans.aplicacao.Contexto;
 import beans.estrututra.him.FotoInstagramHIM;
@@ -49,9 +51,11 @@ public class MonitorInstagramBean implements Serializable
 	
 	public void atualizar()
 	{
-
 		try
 		{
+			hashtag = (String)FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("h");
+			pkEvento = LongUtil.toLong(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("e"));
+			
 			List<InstagramFoto> fotosInstagram = new ArrayList<InstagramFoto>();
 			
 			if(hashtag!=null && hashtag.length()>0)
