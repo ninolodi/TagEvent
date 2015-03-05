@@ -2,7 +2,9 @@ package beans.modulos.instagram;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -24,9 +26,12 @@ import br.com.mresolucoes.atta.utils.BDConstantesAtta;
 public class ConfiguracaoInstagramBean implements Serializable
 {
 	private static final long serialVersionUID = 1L;
+	
+	private static final long CHECK_MONITORAMENTO = 1010L;
 
 	private Evento eventoSelecionado = null;
 	
+	private Map<Long, Boolean> checks = new HashMap<Long, Boolean>();
 	private List<Instagram> instagrams = new ArrayList<Instagram>();
 	private InstagramConfiguracao configuracao = null;
 	private BaseJDBC baseJDBC = new PostgresJDBC(Configuracoes.propriedades.get("baseUrl"), Configuracoes.propriedades.get("baseBase"), Configuracoes.propriedades.getInt("basePorta"), Configuracoes.propriedades.get("baseLogin"), Configuracoes.propriedades.get("baseSenha"), null);
@@ -35,7 +40,7 @@ public class ConfiguracaoInstagramBean implements Serializable
 	{
 		try
 		{
-			
+			checks.put(CHECK_MONITORAMENTO, false);
 		}
 		catch (Exception e)
 		{
@@ -53,6 +58,9 @@ public class ConfiguracaoInstagramBean implements Serializable
 			{
 				instagrams = new InstagramDAO().getInstagramsEvento(baseJDBC, eventoSelecionado.getPkEvento(), BDConstantesAtta.STATUS_ATIVO, 0);
 				configuracao = new InstagramDAO().getInstagramConfiguracaoEvento(baseJDBC, eventoSelecionado.getPkEvento(), BDConstantesAtta.STATUS_ATIVO, 0);
+				
+				if(configuracao!=null)
+				{ checks.put(CHECK_MONITORAMENTO, configuracao.getMonitoramento()); }
 			}			
 		}
 		catch (Exception e)
@@ -89,6 +97,25 @@ public class ConfiguracaoInstagramBean implements Serializable
 		return false;
 	}
 
+	public boolean salvarConfiguracao()
+	{
+		System.out.println("salvarConfiguracao");
+		try
+		{
+			System.out.println(configuracao.getJanela());
+			configuracao.setMonitoramento(checks.get(CHECK_MONITORAMENTO));
+			boolean valor = (new InstagramDAO().salvar(baseJDBC, configuracao) != null ? true : false);
+			baseJDBC.commit();
+			
+			return valor;
+			
+		}
+		catch(Exception e)
+		{
+			Logs.addError("ConfiguracaoInstagramBean - salvarConfiguracao " + configuracao.getPkInstagramConfiguracao(), e);
+		}
+		return false;
+	}
 	
 	/*-*-* Getters and Setters *-*-*/
 
@@ -114,6 +141,14 @@ public class ConfiguracaoInstagramBean implements Serializable
 
 	public void setConfiguracao(InstagramConfiguracao configuracao) {
 		this.configuracao = configuracao;
+	}
+
+	public Map<Long, Boolean> getChecks() {
+		return checks;
+	}
+
+	public void setChecks(Map<Long, Boolean> checks) {
+		this.checks = checks;
 	}	
 
 	
