@@ -146,7 +146,7 @@
 							<label class="font-noraml">Definição de um novo layout:</label>
 							<h:form method="get" class="form-horizontal">
 								<div id="editor" class="summernote">
-									#{configuracao.layoutslideshow}
+									asd
 								</div>
 							</h:form>
 						</div>
@@ -167,43 +167,34 @@
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>Example of Edit by click and save as a html</h5>
-                            <button id="edit" class="btn btn-primary btn-xs m-l-sm" onclick="edit()" type="button">Edit</button>
+                            <h5>Layout Personalizado</h5>
+                            
+							<button id="edit" class="btn btn-primary btn-xs m-l-sm" onclick="edit()" type="button">Edit</button>
                             <button id="save" class="btn btn-primary  btn-xs" onclick="save()" type="button">Save</button>
-                            <div class="ibox-tools">
-                                <a class="collapse-link">
-                                    <i class="fa fa-chevron-up"></i>
-                                </a>
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                    <i class="fa fa-wrench"></i>
-                                </a>
-                                <ul class="dropdown-menu dropdown-user">
-                                    <li><a href="#">Config option 1</a>
-                                    </li>
-                                    <li><a href="#">Config option 2</a>
-                                    </li>
-                                </ul>
-                                <a class="close-link">
-                                    <i class="fa fa-times"></i>
-                                </a>
-                            </div>
+                            
+							<div class="ibox-tools"></div>
                         </div>
                         <div class="ibox-content no-padding">
-
-                            <div class="click2edit wrapper p-md">
-                                <h3>Lorem Ipsum is simply</h3>
-                                dummy text of the printing and typesetting industry. <strong>Lorem Ipsum has been the industry's</strong> standard dummy text ever since the 1500s,
-                                when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic
-                                typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
-                                <br/>
-                                <br/>
-                                <ul>
-                                    <li>Remaining essentially unchanged</li>
-                                    <li>Make a type specimen book</li>
-                                    <li>Unknown printer</li>
-                                </ul>
-                            </div>
-
+							<h:form id="formSlideshowInstagram" class="form-horizontal" prependId="false">
+	
+								<div class="form-group">
+		                            <div class="click2edit wrapper p-md">
+		                                #{ConfiguracaoInstagramBean.configuracao.layoutSlideshow}
+		                            </div>
+									<h:inputHidden id="layout" value="#{ConfiguracaoInstagramBean.configuracao.layoutSlideshow}"/>
+								</div>
+								
+								<div class="hr-line-dashed"></div>
+	
+								<div class="form-group">
+									<div class="col-sm-12">
+										<h:commandLink class="btn btn-primary">
+											Salvar
+											<f:ajax event="click" execute=":formSlideshowInstagram" listener="#{ConfiguracaoInstagramBean.salvarConfiguracao()}" render=":formSlideshowInstagram"/>
+										</h:commandLink>
+									</div>
+								</div>
+							</h:form>
                         </div>
                     </div>
                 </div>
@@ -225,8 +216,13 @@
 	        var edit = function() {
 	            $('.click2edit').summernote({focus: true});
 	        };
-	        var save = function() {
+	        var save = function() 
+	        {
 	            var aHTML = $('.click2edit').code(); //save HTML If you need(aHTML: array).
+	            alert(aHTML);
+	            alert(document.getElementById('layout').value);
+	            document.getElementById('layout').value = aHTML; //save HTML If you need(aHTML: array).
+	            alert(document.getElementById('layout').value);
 	            $('.click2edit').destroy();
 	        };
 	    </script>
