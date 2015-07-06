@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import logs.Logs;
 import persistencia.dao.InstagramDAO;
@@ -14,6 +15,7 @@ import persistencia.om.Instagram;
 import persistencia.om.InstagramConfiguracao;
 import persistencia.om.InstagramFoto;
 import utils.BDConstantes;
+import utils.IntegerUtil;
 import utils.SConstantes;
 import utils.data.Data;
 import beans.aplicacao.Contexto;
@@ -40,6 +42,7 @@ public class SlideshowInstagramBean implements Serializable
 	private long pkEvento = 0;
 	private long layout = 1;
 	private long tempo = 5000;
+	private int nrFotosJanela = 36;
 	
 	public SlideshowInstagramBean() 
 	{
@@ -60,10 +63,15 @@ public class SlideshowInstagramBean implements Serializable
 		{
 			configuracao = instagramDAO.getInstagramConfiguracaoEvento(baseJDBC, pkEvento, BDConstantesAtta.STATUS_ATIVO, 0);
 			
+			if(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("j")!=null)
+			{ nrFotosJanela = IntegerUtil.toInteger((String)FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("j")); }
+			else if(configuracao != null && configuracao.getJanela()!=null)
+			{ nrFotosJanela = configuracao.getJanela(); }
+						
 			fotosInstagram.clear();
-			fotosInstagram.addAll(new InstagramDAO().getFotosInstagramEvento(baseJDBC, pkEvento, new int[] {BDConstantes.STATUS_ATIVO_LIBERADO}, 0, configuracao.getJanela(), 0));
+			fotosInstagram.addAll(new InstagramDAO().getFotosInstagramEvento(baseJDBC, pkEvento, new int[] {BDConstantes.STATUS_ATIVO_LIBERADO}, 0, nrFotosJanela, 0));
 			
-			instagrams = new InstagramDAO().getInstagramsEvento(baseJDBC, pkEvento, BDConstantesAtta.STATUS_ATIVO, 0);
+			instagrams = new InstagramDAO().getInstagramsEvento(baseJDBC, pkEvento, BDConstantesAtta.STATUS_ATIVO, 0);		
 		}
 		catch (Exception e)
 		{
@@ -87,8 +95,8 @@ public class SlideshowInstagramBean implements Serializable
 		
 		if(nrFotosNovas > 0) 
 		{
-			if(nrFotosNovas >= configuracao.getJanela())
-			{ nrFotosRemovidas = configuracao.getJanela(); }
+			if(nrFotosNovas >= nrFotosJanela)
+			{ nrFotosRemovidas = nrFotosJanela; }
 			else
 			{ nrFotosRemovidas = nrFotosNovas; }
 		}
